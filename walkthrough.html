@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Quiz Funnel Walkthrough - Lansing Street Advisors</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Source+Sans+3:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --color-primary: #1B365D;
+  --color-primary-dark: #122440;
+  --color-primary-light: #25516D;
+  --color-secondary: #B29D62;
+  --color-secondary-light: #C5A55A;
+  --color-bg: #FAFAF8;
+  --color-bg-card: #FFFFFF;
+  --color-bg-alt: #F5F3EF;
+  --color-text-primary: #1B365D;
+  --color-text-body: #3D3D3D;
+  --color-text-secondary: #5A6A7A;
+  --color-text-muted: #8B95A2;
+  --color-border: #E2DFD8;
+  --font-heading: 'Playfair Display', Georgia, serif;
+  --font-body: 'Source Sans 3', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: var(--font-body); background: var(--color-bg); color: var(--color-text-body); line-height: 1.6; }
+
+/* Hero */
+.hero {
+  background: linear-gradient(135deg, var(--color-primary-dark) 0%, var(--color-primary) 40%, var(--color-primary-light) 100%);
+  color: white;
+  padding: 64px 24px;
+  text-align: center;
+}
+.hero-badge {
+  display: inline-block;
+  padding: 4px 16px;
+  border-radius: 9999px;
+  background: rgba(178,157,98,0.2);
+  color: var(--color-secondary-light);
+  font-weight: 600;
+  font-size: 0.75rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+.hero h1 {
+  font-family: var(--font-heading);
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 12px;
+  line-height: 1.15;
+}
+.hero p {
+  font-size: 1.125rem;
+  opacity: 0.85;
+  max-width: 600px;
+  margin: 0 auto;
+}
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 48px 24px;
+}
+
+/* Section */
+.section { margin-bottom: 64px; }
+.section-number {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--color-primary);
+  color: white;
+  font-weight: 700;
+  font-size: 0.875rem;
+  margin-bottom: 12px;
+}
+.section h2 {
+  font-family: var(--font-heading);
+  font-size: 1.75rem;
+  color: var(--color-text-primary);
+  margin-bottom: 16px;
+}
+.section p { margin-bottom: 12px; }
+
+/* Flow Steps */
+.flow-steps {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  margin: 32px 0;
+}
+.flow-step {
+  display: flex;
+  gap: 20px;
+  position: relative;
+}
+.flow-step-line {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 48px;
+  flex-shrink: 0;
+}
+.flow-step-dot {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: var(--color-secondary);
+  color: var(--color-primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 700;
+  font-size: 1.125rem;
+  flex-shrink: 0;
+}
+.flow-step-connector {
+  width: 2px;
+  flex: 1;
+  background: var(--color-border);
+  min-height: 24px;
+}
+.flow-step:last-child .flow-step-connector { display: none; }
+.flow-step-content {
+  padding-bottom: 32px;
+}
+.flow-step-content h3 {
+  font-family: var(--font-heading);
+  font-size: 1.25rem;
+  color: var(--color-text-primary);
+  margin-bottom: 4px;
+}
+.flow-step-content p {
+  color: var(--color-text-secondary);
+  font-size: 0.9375rem;
+}
+
+/* Cards Grid */
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 20px;
+  margin: 24px 0;
+}
+.card {
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  padding: 24px;
+}
+.card h4 {
+  font-family: var(--font-heading);
+  font-size: 1.0625rem;
+  color: var(--color-text-primary);
+  margin-bottom: 8px;
+}
+.card p {
+  font-size: 0.875rem;
+  color: var(--color-text-secondary);
+}
+
+/* Stats Row */
+.stats-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 16px;
+  margin: 32px 0;
+}
+.stat-card {
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  padding: 20px;
+  text-align: center;
+}
+.stat-number {
+  font-family: var(--font-heading);
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--color-primary);
+}
+.stat-label {
+  font-size: 0.8125rem;
+  color: var(--color-text-muted);
+  margin-top: 4px;
+}
+
+/* Highlight Box */
+.highlight-box {
+  background: linear-gradient(135deg, rgba(178,157,98,0.08), rgba(178,157,98,0.04));
+  border-left: 3px solid var(--color-secondary);
+  border-radius: 0 8px 8px 0;
+  padding: 16px 20px;
+  margin: 16px 0;
+}
+.highlight-box strong { color: var(--color-secondary); }
+ul { padding-left: 24px; margin-bottom: 12px; }
+li { margin-bottom: 6px; }
+
+/* Deliverables Table */
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 16px 0;
+  font-size: 0.9375rem;
+}
+th {
+  background: var(--color-primary);
+  color: white;
+  padding: 10px 14px;
+  text-align: left;
+  font-weight: 600;
+  font-size: 0.8125rem;
+  text-transform: uppercase;
+}
+td {
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--color-border);
+}
+tr:nth-child(even) { background: var(--color-bg-alt); }
+
+@media (max-width: 640px) {
+  .hero h1 { font-size: 1.75rem; }
+  .hero { padding: 40px 16px; }
+  .container { padding: 32px 16px; }
+  .section h2 { font-size: 1.375rem; }
+  .cards-grid { grid-template-columns: 1fr; }
+  .stats-row { grid-template-columns: repeat(2, 1fr); }
+}
+</style>
+</head>
+<body>
+
+<!-- SECTION 1: What This Is -->
+<div class="hero">
+  <span class="hero-badge">QUIZ FUNNEL WALKTHROUGH</span>
+  <h1>Your Wealth Strategy Score Quiz Funnel</h1>
+  <p>A complete lead generation system that attracts high-net-worth families, qualifies them by readiness, and nurtures them toward a discovery meeting with Lansing Street Advisors.</p>
+</div>
+
+<div class="container">
+
+<!-- SECTION 2: How It Works -->
+<div class="section">
+  <span class="section-number">2</span>
+  <h2>How It Works</h2>
+  <p>The funnel guides prospects through a five-step journey from awareness to action.</p>
+
+  <div class="flow-steps">
+    <div class="flow-step">
+      <div class="flow-step-line">
+        <div class="flow-step-dot">1</div>
+        <div class="flow-step-connector"></div>
+      </div>
+      <div class="flow-step-content">
+        <h3>Landing Page</h3>
+        <p>The prospect arrives from an ad, social post, newsletter, or direct link. They see a compelling headline about their Wealth Strategy Score and click "Discover Your Score in 2 Minutes." No sign-up required to start.</p>
+      </div>
+    </div>
+    <div class="flow-step">
+      <div class="flow-step-line">
+        <div class="flow-step-dot">2</div>
+        <div class="flow-step-connector"></div>
+      </div>
+      <div class="flow-step-content">
+        <h3>7-Question Assessment</h3>
+        <p>Seven questions across seven different interaction types (card selection, slider, tag cloud, emoji scale, multiple choice, yes/no toggle, star rating). Each question is specific to wealth coordination and maps to one of five radar dimensions. Takes approximately 2 minutes.</p>
+      </div>
+    </div>
+    <div class="flow-step">
+      <div class="flow-step-line">
+        <div class="flow-step-dot">3</div>
+        <div class="flow-step-connector"></div>
+      </div>
+      <div class="flow-step-content">
+        <h3>Email Capture</h3>
+        <p>After all seven questions, the prospect enters their email to receive results. The email capture screen references the value waiting for them: their personalized score, radar chart, and actionable recommendations. Email is required; first name is optional.</p>
+      </div>
+    </div>
+    <div class="flow-step">
+      <div class="flow-step-line">
+        <div class="flow-step-dot">4</div>
+        <div class="flow-step-connector"></div>
+      </div>
+      <div class="flow-step-content">
+        <h3>Personalized Results</h3>
+        <p>The results page displays: their score (0-100), a 5-dimension radar chart, their matched profile (one of five), a key insight, a hidden insight, three actionable tips, and temperature-appropriate CTAs. No pricing. Value first.</p>
+      </div>
+    </div>
+    <div class="flow-step">
+      <div class="flow-step-line">
+        <div class="flow-step-dot">5</div>
+        <div class="flow-step-connector"></div>
+      </div>
+      <div class="flow-step-content">
+        <h3>Email Nurture</h3>
+        <p>Based on their score (hot 80-100, warm 50-79, cold 0-49), the prospect enters one of three tailored email sequences. Hot leads receive 2 consultation-focused emails. Warm leads get 3 educational + case study emails. Cold leads receive 4 trust-building educational emails. All paths include a welcome sequence and a win-back sequence for non-engagers.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 3: Why It Works -->
+<div class="section">
+  <span class="section-number">3</span>
+  <h2>Why It Works</h2>
+  <p>This quiz funnel is built on proven psychological principles tailored to the wealth management industry.</p>
+
+  <div class="cards-grid">
+    <div class="card">
+      <h4>Self-Diagnosis Creates Ownership</h4>
+      <p>When prospects select answers that describe their coordination gaps, they are admitting the problem themselves. No sales copy is more powerful than a self-identified need.</p>
+    </div>
+    <div class="card">
+      <h4>Education Builds Trust</h4>
+      <p>The quiz teaches prospects about financial coordination, fiduciary duty, and the four pillars. They leave the quiz smarter than they arrived, whether or not they become clients.</p>
+    </div>
+    <div class="card">
+      <h4>Personalization Feels Exclusive</h4>
+      <p>The radar chart, profile match, and hidden insight make each result feel individually crafted. Prospects feel seen and understood by a firm that "gets" their specific situation.</p>
+    </div>
+    <div class="card">
+      <h4>Temperature Routing Matches Intent</h4>
+      <p>Hot leads get direct consultation CTAs. Cold leads get educational content. Nobody feels pushed too hard or left behind. Each prospect gets the right next step for their readiness level.</p>
+    </div>
+    <div class="card">
+      <h4>Thought Leadership Integration</h4>
+      <p>The funnel connects to Matt Topley's existing content ecosystem (Topley's Top 10 newsletter, View from the Top blog). Cold leads enter the content flywheel and warm up over time.</p>
+    </div>
+    <div class="card">
+      <h4>Heritage Creates Differentiation</h4>
+      <p>The Kilkenny Castle narrative, family heritage story, and four pillars framework are woven into email sequences and results copy. No competitor can replicate this authentic brand identity.</p>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 4: Where to Use It -->
+<div class="section">
+  <span class="section-number">4</span>
+  <h2>Where to Use It</h2>
+  <p>The quiz funnel is designed for multi-channel distribution. Here are the recommended traffic sources, ordered by expected ROI.</p>
+
+  <div class="cards-grid">
+    <div class="card">
+      <h4>LinkedIn (Primary)</h4>
+      <p>Matt Topley's personal profile and Lansing Street company page. Organic posts linking to quiz + sponsored InMail campaigns targeting HNW professionals in Greater Philadelphia. LinkedIn is the top channel for B2B wealth management.</p>
+    </div>
+    <div class="card">
+      <h4>Facebook/Instagram Ads</h4>
+      <p>Targeted ads reaching affluent homeowners in Montgomery County, Bucks County, and the Philadelphia Main Line. Custom audiences from email list + lookalike audiences from quiz completions.</p>
+    </div>
+    <div class="card">
+      <h4>Topley's Top 10 Newsletter</h4>
+      <p>Embed the quiz link in the existing daily newsletter. Existing subscribers are warm by default and likely to convert at high rates. One mention per week in the newsletter sidebar or P.S.</p>
+    </div>
+    <div class="card">
+      <h4>Google Ads</h4>
+      <p>Target high-intent keywords like "wealth management Philadelphia," "fiduciary advisor near me," and "financial planner Montgomery County." Quiz landing page as the destination for all campaigns.</p>
+    </div>
+    <div class="card">
+      <h4>Email Signature</h4>
+      <p>Add "Take the free Wealth Strategy Score assessment" to every team member's email signature. Low cost, high credibility, drip exposure over every client and prospect interaction.</p>
+    </div>
+    <div class="card">
+      <h4>Website Integration</h4>
+      <p>Embed the quiz on the Lansing Street Advisors website. Exit-intent popup on key pages (financial services, about us). Sticky banner on the blog. Convert existing website traffic into qualified leads.</p>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 5: What You Get -->
+<div class="section">
+  <span class="section-number">5</span>
+  <h2>What You Get</h2>
+  <p>The complete quiz funnel package includes the following deliverables.</p>
+
+  <table>
+    <tr><th>Deliverable</th><th>Description</th></tr>
+    <tr><td><strong>Landing Page</strong></td><td>Conversion-optimized page with headline, benefits, social proof, and CTA. Mobile-responsive, Glossy design mode with navy/gold palette.</td></tr>
+    <tr><td><strong>7-Question Quiz</strong></td><td>Seven interactive question types with branded copy, progress bar, loading animations, and smooth transitions.</td></tr>
+    <tr><td><strong>Email Capture</strong></td><td>Post-quiz email collection screen referencing the value being delivered (score, radar chart, recommendations).</td></tr>
+    <tr><td><strong>Results Page</strong></td><td>Personalized results with score, radar chart, profile match, key insight, hidden insight, 3 tips, and temperature-based CTAs.</td></tr>
+    <tr><td><strong>14 Email Sequences</strong></td><td>5 sequences (Welcome, Cold, Warm, Hot, Win-Back) auto-delivered based on quiz score. All in brand voice.</td></tr>
+    <tr><td><strong>Analytics Dashboard</strong></td><td>Password-protected admin page showing funnel metrics, completion rates, temperature distribution, answer analysis, and UTM sources.</td></tr>
+    <tr><td><strong>Supabase Database</strong></td><td>Full backend for quiz submissions, email scheduling, analytics events, and email template storage.</td></tr>
+    <tr><td><strong>Strategy Pack</strong></td><td>Ad strategy (Google, Facebook, LinkedIn), 30-day social content calendar, and hot/warm/cold sales conversation scripts.</td></tr>
+  </table>
+</div>
+
+<!-- SECTION 6: Quick Stats -->
+<div class="section">
+  <span class="section-number">6</span>
+  <h2>Quick Stats</h2>
+
+  <div class="stats-row">
+    <div class="stat-card">
+      <div class="stat-number">7</div>
+      <div class="stat-label">Quiz Questions</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number">7</div>
+      <div class="stat-label">Question Types</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number">5</div>
+      <div class="stat-label">Result Profiles</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number">5</div>
+      <div class="stat-label">Radar Dimensions</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number">14</div>
+      <div class="stat-label">Emails</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number">3</div>
+      <div class="stat-label">Temperature Paths</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number">~2 min</div>
+      <div class="stat-label">Completion Time</div>
+    </div>
+    <div class="stat-card">
+      <div class="stat-number">6</div>
+      <div class="stat-label">Services Mapped</div>
+    </div>
+  </div>
+
+  <div class="highlight-box">
+    <strong>Target performance:</strong> Industry benchmarks for quiz funnels in professional services show 40-60% quiz start rates, 70-85% completion rates, and 50-70% email capture rates. With Lansing Street's existing content ecosystem and audience trust, we expect performance at or above these benchmarks.
+  </div>
+</div>
+
+</div>
+</body>
+</html>

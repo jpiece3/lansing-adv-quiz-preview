@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Client Preview - Lansing Street Advisors Quiz Funnel</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Source+Sans+3:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --color-primary: #1B365D;
+  --color-primary-dark: #122440;
+  --color-primary-light: #25516D;
+  --color-secondary: #B29D62;
+  --color-secondary-light: #C5A55A;
+  --color-bg: #FAFAF8;
+  --color-bg-card: #FFFFFF;
+  --color-bg-alt: #F5F3EF;
+  --color-text-primary: #1B365D;
+  --color-text-body: #3D3D3D;
+  --color-text-secondary: #5A6A7A;
+  --color-text-muted: #8B95A2;
+  --color-border: #E2DFD8;
+  --font-heading: 'Playfair Display', Georgia, serif;
+  --font-body: 'Source Sans 3', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: var(--font-body); background: var(--color-bg); color: var(--color-text-body); line-height: 1.6; }
+.hero {
+  background: linear-gradient(135deg, var(--color-primary-dark) 0%, var(--color-primary) 40%, var(--color-primary-light) 100%);
+  color: white;
+  padding: 64px 24px 48px;
+  text-align: center;
+}
+.hero-badge {
+  display: inline-block;
+  padding: 4px 16px;
+  border-radius: 9999px;
+  background: rgba(178,157,98,0.2);
+  color: var(--color-secondary-light);
+  font-weight: 600;
+  font-size: 0.75rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+.hero h1 {
+  font-family: var(--font-heading);
+  font-size: 2.5rem;
+  font-weight: 700;
+  margin-bottom: 12px;
+  line-height: 1.15;
+}
+.hero p {
+  font-size: 1.125rem;
+  opacity: 0.85;
+  max-width: 600px;
+  margin: 0 auto;
+}
+.container {
+  max-width: 900px;
+  margin: 0 auto;
+  padding: 48px 24px 64px;
+}
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px;
+}
+.nav-card {
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: 16px;
+  padding: 28px 24px;
+  text-decoration: none;
+  display: block;
+  position: relative;
+  overflow: hidden;
+  transition: transform 200ms cubic-bezier(0.4, 0, 0.2, 1), box-shadow 200ms cubic-bezier(0.4, 0, 0.2, 1), border-color 200ms;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 4px 12px rgba(0,0,0,0.03);
+}
+.nav-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 4px 12px rgba(20,15,10,0.06), 0 8px 24px rgba(20,15,10,0.04), 0 16px 32px rgba(20,15,10,0.03);
+  border-color: rgba(178,157,98,0.4);
+}
+.nav-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--color-primary), var(--color-secondary));
+  opacity: 0;
+  transition: opacity 200ms;
+}
+.nav-card:hover::before {
+  opacity: 1;
+}
+.nav-card-number {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: rgba(27,54,93,0.08);
+  color: var(--color-primary);
+  font-weight: 700;
+  font-size: 0.875rem;
+  margin-bottom: 12px;
+}
+.nav-card h3 {
+  font-family: var(--font-heading);
+  font-size: 1.25rem;
+  color: var(--color-text-primary);
+  margin-bottom: 8px;
+}
+.nav-card p {
+  font-size: 0.875rem;
+  color: var(--color-text-secondary);
+  line-height: 1.5;
+}
+.nav-card .arrow {
+  position: absolute;
+  bottom: 20px;
+  right: 20px;
+  color: var(--color-text-muted);
+  font-size: 1.25rem;
+  transition: transform 200ms, color 200ms;
+}
+.nav-card:hover .arrow {
+  transform: translateX(4px);
+  color: var(--color-secondary);
+}
+.footer {
+  text-align: center;
+  padding: 32px 24px;
+  color: var(--color-text-muted);
+  font-size: 0.8125rem;
+  border-top: 1px solid var(--color-border);
+  max-width: 900px;
+  margin: 0 auto;
+}
+@media (max-width: 640px) {
+  .hero h1 { font-size: 1.75rem; }
+  .hero { padding: 40px 16px 32px; }
+  .container { padding: 24px 16px 48px; }
+  .cards-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <span class="hero-badge">CLIENT PREVIEW</span>
+  <h1>Lansing Street Advisors</h1>
+  <p>Wealth Strategy Score Quiz Funnel - Complete documentation and strategy for your review.</p>
+</div>
+
+<div class="container">
+  <div class="cards-grid">
+
+    <a href="walkthrough.html" class="nav-card">
+      <div class="nav-card-number">1</div>
+      <h3>Quiz Funnel Walkthrough</h3>
+      <p>What this is, how it works, why it works, where to use it, what you get, and key performance metrics.</p>
+      <span class="arrow">&rarr;</span>
+    </a>
+
+    <a href="research.html" class="nav-card">
+      <div class="nav-card-number">2</div>
+      <h3>Research Report</h3>
+      <p>Market research, brand voice analysis, customer segments, competitive landscape, SEO keywords, and visual identity.</p>
+      <span class="arrow">&rarr;</span>
+    </a>
+
+    <a href="email-sequences.html" class="nav-card">
+      <div class="nav-card-number">3</div>
+      <h3>Email Sequences</h3>
+      <p>All 14 emails across 5 sequences: Welcome, Cold Nurture, Warm Activation, Hot Path, and Win-Back.</p>
+      <span class="arrow">&rarr;</span>
+    </a>
+
+    <a href="quiz-copy-explainer.html" class="nav-card">
+      <div class="nav-card-number">4</div>
+      <h3>Copy Explainer</h3>
+      <p>Detailed breakdown of every copy decision: question rationale, answer psychology, scoring logic, and persuasion techniques.</p>
+      <span class="arrow">&rarr;</span>
+    </a>
+
+    <a href="ways-to-grow.html" class="nav-card">
+      <div class="nav-card-number">5</div>
+      <h3>Ways to Grow</h3>
+      <p>Included features (Lead Intelligence Agent, email automation, analytics) and growth add-ons (DM automation, voice agent, SMS).</p>
+      <span class="arrow">&rarr;</span>
+    </a>
+
+    <a href="ad-strategy.html" class="nav-card">
+      <div class="nav-card-number">6</div>
+      <h3>Ad Strategy</h3>
+      <p>Google, Facebook/Instagram, and LinkedIn ad variations with targeting recommendations and A/B testing plan.</p>
+      <span class="arrow">&rarr;</span>
+    </a>
+
+    <a href="social-content.html" class="nav-card">
+      <div class="nav-card-number">7</div>
+      <h3>Social Content Calendar</h3>
+      <p>30-day content calendar with 4 pillars, platform strategy, and week-by-week post schedule across LinkedIn, Instagram, Twitter/X, and Facebook.</p>
+      <span class="arrow">&rarr;</span>
+    </a>
+
+    <a href="sales-scripts.html" class="nav-card">
+      <div class="nav-card-number">8</div>
+      <h3>Sales Scripts</h3>
+      <p>Conversation frameworks for hot, warm, and cold leads with common objection handling for the Lansing Street team.</p>
+      <span class="arrow">&rarr;</span>
+    </a>
+
+  </div>
+</div>
+
+<div class="footer">
+  Lansing Street Advisors | Wealth Strategy Score Quiz Funnel | Prepared January 2026
+</div>
+
+</body>
+</html>

@@ -1,0 +1,707 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Email Sequences - Lansing Street Advisors Quiz Funnel</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Source+Sans+3:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --color-primary: #1B365D;
+  --color-primary-dark: #122440;
+  --color-primary-light: #25516D;
+  --color-secondary: #B29D62;
+  --color-secondary-light: #C5A55A;
+  --color-bg: #FAFAF8;
+  --color-bg-card: #FFFFFF;
+  --color-bg-alt: #F5F3EF;
+  --color-text-primary: #1B365D;
+  --color-text-body: #3D3D3D;
+  --color-text-secondary: #5A6A7A;
+  --color-text-muted: #8B95A2;
+  --color-border: #E2DFD8;
+  --color-temp-hot: #22C55E;
+  --color-temp-warm: #F59E0B;
+  --color-temp-cold: #3B82F6;
+  --font-heading: 'Playfair Display', Georgia, serif;
+  --font-body: 'Source Sans 3', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: var(--font-body);
+  background: var(--color-bg);
+  color: var(--color-text-body);
+  line-height: 1.6;
+}
+.page-header {
+  background: linear-gradient(135deg, var(--color-primary-dark) 0%, var(--color-primary) 40%, var(--color-primary-light) 100%);
+  color: white;
+  padding: 48px 24px;
+  text-align: center;
+}
+.page-header h1 {
+  font-family: var(--font-heading);
+  font-size: 2.25rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+.page-header p {
+  font-size: 1.125rem;
+  opacity: 0.85;
+}
+.container {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 32px 24px;
+}
+.sequence-header {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-top: 48px;
+  margin-bottom: 24px;
+  padding-bottom: 16px;
+  border-bottom: 2px solid var(--color-border);
+}
+.sequence-badge {
+  display: inline-flex;
+  align-items: center;
+  padding: 4px 16px;
+  border-radius: 9999px;
+  font-weight: 600;
+  font-size: 0.75rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+.badge-welcome { background: rgba(27,54,93,0.1); color: var(--color-primary); }
+.badge-cold { background: rgba(59,130,246,0.1); color: #2563eb; }
+.badge-warm { background: rgba(245,158,11,0.1); color: #d97706; }
+.badge-hot { background: rgba(34,197,94,0.1); color: #16a34a; }
+.badge-winback { background: rgba(139,149,162,0.1); color: var(--color-text-secondary); }
+.sequence-header h2 {
+  font-family: var(--font-heading);
+  font-size: 1.5rem;
+  color: var(--color-text-primary);
+}
+.sequence-meta {
+  font-size: 0.875rem;
+  color: var(--color-text-muted);
+  margin-bottom: 24px;
+}
+.email-card {
+  background: var(--color-bg-card);
+  border-radius: 16px;
+  border: 1px solid var(--color-border);
+  margin-bottom: 24px;
+  overflow: hidden;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 4px 12px rgba(0,0,0,0.03);
+}
+.email-header {
+  padding: 20px 24px;
+  border-bottom: 1px solid var(--color-border);
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.email-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+.email-id {
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-text-muted);
+}
+.email-subject {
+  font-family: var(--font-heading);
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--color-text-primary);
+}
+.email-tags {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+.email-tag {
+  font-size: 0.6875rem;
+  padding: 2px 10px;
+  border-radius: 9999px;
+  font-weight: 500;
+}
+.tag-day { background: rgba(27,54,93,0.08); color: var(--color-primary); }
+.tag-sender { background: rgba(178,157,98,0.12); color: #8E7D4E; }
+.email-body {
+  padding: 24px;
+  font-size: 0.9375rem;
+  line-height: 1.7;
+  color: var(--color-text-body);
+  white-space: pre-line;
+}
+.email-body strong {
+  color: var(--color-text-primary);
+}
+.email-cta-row {
+  padding: 16px 24px;
+  background: var(--color-bg-alt);
+  border-top: 1px solid var(--color-border);
+  font-size: 0.8125rem;
+  color: var(--color-text-secondary);
+}
+.email-cta-row strong {
+  color: var(--color-secondary);
+}
+.summary-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  gap: 16px;
+  margin: 32px 0;
+}
+.summary-card {
+  background: var(--color-bg-card);
+  border-radius: 12px;
+  padding: 20px;
+  text-align: center;
+  border: 1px solid var(--color-border);
+}
+.summary-number {
+  font-family: var(--font-heading);
+  font-size: 2rem;
+  font-weight: 700;
+  color: var(--color-primary);
+}
+.summary-label {
+  font-size: 0.8125rem;
+  color: var(--color-text-muted);
+  margin-top: 4px;
+}
+@media (max-width: 640px) {
+  .page-header h1 { font-size: 1.75rem; }
+  .email-header { flex-direction: column; }
+  .container { padding: 16px; }
+  .summary-grid { grid-template-columns: repeat(2, 1fr); }
+}
+</style>
+</head>
+<body>
+
+<div class="page-header">
+  <h1>Email Sequences</h1>
+  <p>Lansing Street Advisors - Wealth Strategy Score Quiz Funnel</p>
+</div>
+
+<div class="container">
+
+<div class="summary-grid">
+  <div class="summary-card">
+    <div class="summary-number">14</div>
+    <div class="summary-label">Total Emails</div>
+  </div>
+  <div class="summary-card">
+    <div class="summary-number">5</div>
+    <div class="summary-label">Sequences</div>
+  </div>
+  <div class="summary-card">
+    <div class="summary-number">3</div>
+    <div class="summary-label">Temperature Paths</div>
+  </div>
+  <div class="summary-card">
+    <div class="summary-number">10</div>
+    <div class="summary-label">Day Span</div>
+  </div>
+</div>
+
+<!-- WELCOME SEQUENCE -->
+<div class="sequence-header">
+  <span class="sequence-badge badge-welcome">WELCOME</span>
+  <h2>Welcome Sequence</h2>
+</div>
+<div class="sequence-meta">3 emails | Days 0, 2, 5 | Sent to all quiz completions</div>
+
+<div class="email-card">
+  <div class="email-header">
+    <div class="email-meta">
+      <span class="email-id">W1</span>
+      <span class="email-subject">Your Wealth Strategy Score: {{score}}/100</span>
+    </div>
+    <div class="email-tags">
+      <span class="email-tag tag-day">Day 0</span>
+      <span class="email-tag tag-sender">Matt Topley</span>
+    </div>
+  </div>
+  <div class="email-body">{{first_name}},
+
+Thank you for taking the Wealth Strategy Score assessment. Here is a summary of what your answers revealed.
+
+<strong>Your Score: {{score}} out of 100</strong>
+<strong>Your Profile: {{profile_name}}</strong>
+
+Your radar chart highlighted these as your most significant coordination gaps:
+- {{top_dimension_1}}: This dimension had the highest gap
+- {{top_dimension_2}}: Your second largest area of opportunity
+
+<strong>Your Hidden Insight:</strong>
+{{hidden_insight}}
+
+<strong>Your Three Recommendations:</strong>
+1. {{tip_1}}
+2. {{tip_2}}
+3. {{tip_3}}
+
+These results are a starting point. The real value comes from turning awareness into action.
+
+To your family's financial future,
+Matt Topley
+Founder & President, Lansing Street Advisors</div>
+  <div class="email-cta-row"><strong>CTA:</strong> Temperature-based (Discovery Meeting / Checklist Download / Newsletter)</div>
+</div>
+
+<div class="email-card">
+  <div class="email-header">
+    <div class="email-meta">
+      <span class="email-id">W2</span>
+      <span class="email-subject">The wealth gap hiding in plain sight</span>
+    </div>
+    <div class="email-tags">
+      <span class="email-tag tag-day">Day 2</span>
+      <span class="email-tag tag-sender">Matt Topley</span>
+    </div>
+  </div>
+  <div class="email-body">{{first_name}},
+
+Here is a number that surprises most families: the average high-net-worth household works with 4-7 financial professionals who never coordinate with each other.
+
+Accountant. Attorney. Broker. Insurance agent. Bank. Each one sees a single piece of your financial life. Nobody is looking at the complete picture.
+
+This is what we call the Coordination Gap. It is the space between having good individual professionals and having them work as a system.
+
+<strong>What the Coordination Gap actually costs:</strong>
+- Tax strategies that conflict with investment decisions
+- Estate plans that have not been updated since your last major life change
+- Insurance coverage that overlaps in some areas and leaves blind spots in others
+- Cash flow projections that do not account for the full picture
+
+At Lansing Street Advisors, we built our entire practice around closing this gap.
+
+Matt Topley
+Founder & President</div>
+  <div class="email-cta-row"><strong>CTA:</strong> Temperature-based</div>
+</div>
+
+<div class="email-card">
+  <div class="email-header">
+    <div class="email-meta">
+      <span class="email-id">W3</span>
+      <span class="email-subject">70% of family wealth is gone by the second generation</span>
+    </div>
+    <div class="email-tags">
+      <span class="email-tag tag-day">Day 5</span>
+      <span class="email-tag tag-sender">Matt Topley</span>
+    </div>
+  </div>
+  <div class="email-body">{{first_name}},
+
+That statistic is from a 20-year study by the Williams Group. 70% of family wealth disappears by the second generation. 90% by the third.
+
+The families who beat those odds share three things in common:
+
+<strong>1. They coordinate, not just accumulate.</strong>
+<strong>2. They talk about money as a family.</strong>
+<strong>3. They work with a fiduciary.</strong>
+
+My family's own story starts in Kilkenny, Ireland. My ancestors came to the United States for a better future for their children and grandchildren. That same spirit is what drives our work at Lansing Street Advisors today.
+
+Your Wealth Strategy Score of {{score}} is the starting point. What you do with it determines the trajectory.
+
+Matt Topley
+Founder & President</div>
+  <div class="email-cta-row"><strong>CTA:</strong> Temperature-based</div>
+</div>
+
+<!-- COLD NURTURE -->
+<div class="sequence-header">
+  <span class="sequence-badge badge-cold">COLD</span>
+  <h2>Cold Nurture Sequence</h2>
+</div>
+<div class="sequence-meta">4 emails | Days 1, 3, 7, 10 | Score 0-49</div>
+
+<div class="email-card">
+  <div class="email-header">
+    <div class="email-meta">
+      <span class="email-id">C1</span>
+      <span class="email-subject">Which phase of your financial life are you in?</span>
+    </div>
+    <div class="email-tags">
+      <span class="email-tag tag-day">Day 1</span>
+      <span class="email-tag tag-sender">Lansing Street Advisors</span>
+    </div>
+  </div>
+  <div class="email-body">{{first_name}},
+
+Every family moves through three financial phases. Understanding which one you are in changes how you think about everything.
+
+<strong>Phase 1: Accumulation</strong>
+This is the building phase. Career growth, saving, investing, increasing income.
+
+<strong>Phase 2: Preservation</strong>
+You have built something meaningful. Now the priority shifts to protecting it.
+
+<strong>Phase 3: Distribution</strong>
+This is where wealth either transfers successfully to the next generation or erodes.
+
+Most families do not realize they have moved from one phase to the next until they face a decision that demands the new mindset.
+
+Your Wealth Strategy Score suggests you are building a strong foundation. The most powerful thing you can do right now is understand which phase you are in.
+
+The Lansing Street Advisors Team</div>
+  <div class="email-cta-row"><strong>CTA:</strong> Learn about financial services</div>
+</div>
+
+<div class="email-card">
+  <div class="email-header">
+    <div class="email-meta">
+      <span class="email-id">C2</span>
+      <span class="email-subject">The question your financial advisor hopes you never ask</span>
+    </div>
+    <div class="email-tags">
+      <span class="email-tag tag-day">Day 3</span>
+      <span class="email-tag tag-sender">Matt Topley</span>
+    </div>
+  </div>
+  <div class="email-body">{{first_name}},
+
+There is one question that separates advisors who work for you from those who work for themselves:
+
+<strong>"Are you a legal fiduciary?"</strong>
+
+A fiduciary is legally required to put your interests ahead of their own. Every recommendation. Every decision. No exceptions.
+
+A broker operates under a "suitability" standard. They only need to recommend products that are "suitable" for you. Not necessarily the best option.
+
+83% of Americans believe their financial advisor is a fiduciary. Only about 15% actually are.
+
+Lansing Street Advisors is a SEC-registered fiduciary. We do not sell products. We do not earn commissions. We work for your family.
+
+Matt Topley
+Founder & President</div>
+  <div class="email-cta-row"><strong>CTA:</strong> Learn about fiduciary duty</div>
+</div>
+
+<div class="email-card">
+  <div class="email-header">
+    <div class="email-meta">
+      <span class="email-id">C3</span>
+      <span class="email-subject">This might be costing your family $30,000+ per year</span>
+    </div>
+    <div class="email-tags">
+      <span class="email-tag tag-day">Day 7</span>
+      <span class="email-tag tag-sender">Matt Topley</span>
+    </div>
+  </div>
+  <div class="email-body">{{first_name}},
+
+The average high-net-worth family overpays $30,000 to $80,000 in taxes annually.
+
+Not because they have a bad accountant. Because their accountant, investment advisor, estate attorney, and insurance agent are not talking to each other.
+
+<strong>How it plays out:</strong>
+- Your investment advisor makes trades without considering the tax implications
+- Your estate plan was written five years ago and does not reflect current assets
+- Your insurance coverage was designed for a different phase of your financial life
+- Your retirement accounts are structured for accumulation when you should be thinking about distribution
+
+Nobody is doing anything wrong individually. The problem is that nobody is coordinating the whole picture.
+
+This is what a family office approach solves. One team. One strategy. Every piece of your financial life working together.
+
+Matt Topley
+Founder & President</div>
+  <div class="email-cta-row"><strong>CTA:</strong> Learn about family office approach</div>
+</div>
+
+<div class="email-card">
+  <div class="email-header">
+    <div class="email-meta">
+      <span class="email-id">C4</span>
+      <span class="email-subject">Five signs it might be time for professional guidance</span>
+    </div>
+    <div class="email-tags">
+      <span class="email-tag tag-day">Day 10</span>
+      <span class="email-tag tag-sender">Matt Topley</span>
+    </div>
+  </div>
+  <div class="email-body">{{first_name}},
+
+Managing your own investments is smart early on. But there is a point where complexity outgrows what any single person can track.
+
+<strong>Five signs you may have reached that point:</strong>
+
+1. Your tax return is more than 15 pages
+2. You own assets across more than three account types
+3. You have experienced or are approaching a major life event
+4. You are not sure how your investments connect to your tax strategy
+5. You worry about whether your family would know what to do if something happened to you
+
+If three or more apply, a conversation with a fiduciary advisor could save you time, money, and worry.
+
+We offer a complimentary discovery meeting with no obligation.
+
+Matt Topley
+Founder & President</div>
+  <div class="email-cta-row"><strong>CTA:</strong> Schedule complimentary discovery meeting</div>
+</div>
+
+<!-- WARM ACTIVATION -->
+<div class="sequence-header">
+  <span class="sequence-badge badge-warm">WARM</span>
+  <h2>Warm Activation Sequence</h2>
+</div>
+<div class="sequence-meta">3 emails | Days 1, 3, 6 | Score 50-79</div>
+
+<div class="email-card">
+  <div class="email-header">
+    <div class="email-meta">
+      <span class="email-id">WA1</span>
+      <span class="email-subject">Your top 2 wealth coordination gaps</span>
+    </div>
+    <div class="email-tags">
+      <span class="email-tag tag-day">Day 1</span>
+      <span class="email-tag tag-sender">Matt Topley</span>
+    </div>
+  </div>
+  <div class="email-body">{{first_name}},
+
+Your Wealth Strategy Score of {{score}} tells a clear story: you have a solid financial foundation with specific areas where better coordination could make a meaningful difference.
+
+<strong>Gap 1: {{top_dimension_1}}</strong>
+<strong>Gap 2: {{top_dimension_2}}</strong>
+
+These gaps are not about having bad professionals. They are about decisions happening in silos.
+
+When your tax strategy, investment approach, estate plan, and risk management are coordinated as one system, everything works harder. Less goes to taxes. More goes to your family.
+
+I have spent 25 years watching what happens when families close these gaps. The difference is not subtle.
+
+Matt Topley
+Founder & President</div>
+  <div class="email-cta-row"><strong>CTA:</strong> Schedule complimentary discovery meeting</div>
+</div>
+
+<div class="email-card">
+  <div class="email-header">
+    <div class="email-meta">
+      <span class="email-id">WA2</span>
+      <span class="email-subject">From 6 professionals to one coordinated team</span>
+    </div>
+    <div class="email-tags">
+      <span class="email-tag tag-day">Day 3</span>
+      <span class="email-tag tag-sender">Matt Topley</span>
+    </div>
+  </div>
+  <div class="email-body">{{first_name}},
+
+A family comes to us with $2-5 million in assets. They have a CPA, estate attorney, broker, separate insurance agent, and a bank. None of them are talking to each other.
+
+When we bring everything under one roof, here is what typically changes:
+
+<strong>Tax efficiency improves by 15-30%.</strong>
+<strong>Estate plans get updated and stress-tested.</strong>
+<strong>Insurance is right-sized.</strong>
+<strong>The family gets one number to call.</strong>
+
+This is what we mean by "Your Family's Personal Chief Financial Officer."
+
+Your Wealth Strategy Score of {{score}} suggests your family is in a strong position to benefit from this kind of coordination.
+
+Matt Topley
+Founder & President</div>
+  <div class="email-cta-row"><strong>CTA:</strong> Schedule discovery meeting</div>
+</div>
+
+<div class="email-card">
+  <div class="email-header">
+    <div class="email-meta">
+      <span class="email-id">WA3</span>
+      <span class="email-subject">Can I ask you something, {{first_name}}?</span>
+    </div>
+    <div class="email-tags">
+      <span class="email-tag tag-day">Day 6</span>
+      <span class="email-tag tag-sender">Matt Topley</span>
+    </div>
+  </div>
+  <div class="email-body">{{first_name}},
+
+I have been doing this for 25 years. I ran trading for a $1.5 billion hedge fund. I helped grow a mutual fund desk from $1.5 billion to $30 billion. I built a real estate fund with $50 million in assets.
+
+But the work I am most proud of happens in our discovery meetings.
+
+That is where a family sits down and, for the first time, sees their complete financial picture laid out in one place.
+
+I am not going to pretend we are the right fit for every family. We are independent, fiduciary, and focused on families who want real coordination across their financial lives.
+
+But if your Wealth Strategy Score resonated with you, I would like to have a conversation.
+
+No pitch. No obligation. Just 30 minutes.
+
+Or call us directly: (215) 718-2063
+
+Matt Topley
+Founder & President</div>
+  <div class="email-cta-row"><strong>CTA:</strong> Schedule discovery meeting or call (215) 718-2063</div>
+</div>
+
+<!-- HOT PATH -->
+<div class="sequence-header">
+  <span class="sequence-badge badge-hot">HOT</span>
+  <h2>Hot Path Sequence</h2>
+</div>
+<div class="sequence-meta">2 emails | Days 1, 4 | Score 80-100</div>
+
+<div class="email-card">
+  <div class="email-header">
+    <div class="email-meta">
+      <span class="email-id">H1</span>
+      <span class="email-subject">{{first_name}}, your score suggests it is time to act</span>
+    </div>
+    <div class="email-tags">
+      <span class="email-tag tag-day">Day 1</span>
+      <span class="email-tag tag-sender">Matt Topley</span>
+    </div>
+  </div>
+  <div class="email-body">{{first_name}},
+
+I want to be direct with you.
+
+Your Wealth Strategy Score of {{score}} out of 100 indicates significant coordination gaps across your financial life.
+
+Based on your answers, you are likely dealing with at least two of these situations:
+- Financial professionals who are not coordinating with each other
+- An estate plan that may not reflect your current wishes
+- A portfolio that is not positioned for what comes next
+- Cash flow planning that has not been stress-tested
+
+We offer a complimentary discovery meeting. No sales pitch. No obligation. Just a clear-eyed look at your financial coordination.
+
+<strong>Schedule your meeting:</strong> lansingadv.com/consultation
+<strong>Or call directly:</strong> (215) 718-2063
+
+The longer coordination gaps persist, the more they cost. In taxes. In missed opportunities. In peace of mind.
+
+Matt Topley
+Founder & President</div>
+  <div class="email-cta-row"><strong>CTA:</strong> Schedule discovery meeting (urgent)</div>
+</div>
+
+<div class="email-card">
+  <div class="email-header">
+    <div class="email-meta">
+      <span class="email-id">H2</span>
+      <span class="email-subject">30 minutes that could change your family's financial trajectory</span>
+    </div>
+    <div class="email-tags">
+      <span class="email-tag tag-day">Day 4</span>
+      <span class="email-tag tag-sender">Matt Topley</span>
+    </div>
+  </div>
+  <div class="email-body">{{first_name}},
+
+I know "schedule a meeting" sounds like the start of a sales process. Here is exactly what a discovery meeting looks like:
+
+<strong>1. We listen.</strong> You tell us about your family and your financial situation.
+<strong>2. We map your financial life.</strong> Most families have never seen the full picture in one place.
+<strong>3. We identify the biggest coordination gaps.</strong>
+<strong>4. We tell you what we would do.</strong> A clear, honest assessment.
+<strong>5. You decide.</strong> No pressure. No follow-up calls unless you ask.
+
+Whether you close those gaps with us or someone else, the important thing is that you close them.
+
+<strong>Schedule your discovery meeting:</strong> lansingadv.com/consultation
+<strong>Call us:</strong> (215) 718-2063
+
+Matt Topley
+Founder & President
+
+P.S. We are a fiduciary. That means we are legally required to put your interests ahead of our own. No products to sell. No commissions.</div>
+  <div class="email-cta-row"><strong>CTA:</strong> Schedule discovery meeting</div>
+</div>
+
+<!-- WIN-BACK -->
+<div class="sequence-header">
+  <span class="sequence-badge badge-winback">WIN-BACK</span>
+  <h2>Win-Back Sequence</h2>
+</div>
+<div class="sequence-meta">2 emails | Days 1 and 5 after primary sequence ends | No engagement triggers</div>
+
+<div class="email-card">
+  <div class="email-header">
+    <div class="email-meta">
+      <span class="email-id">WB1</span>
+      <span class="email-subject">Your Wealth Strategy Score is still {{score}}/100</span>
+    </div>
+    <div class="email-tags">
+      <span class="email-tag tag-day">Post +1</span>
+      <span class="email-tag tag-sender">Lansing Street Advisors</span>
+    </div>
+  </div>
+  <div class="email-body">{{first_name}},
+
+A few days ago you took the Wealth Strategy Score assessment and scored {{score}} out of 100.
+
+We shared your results, your radar chart, and three specific recommendations. But we have not heard from you since.
+
+That is completely fine. Financial decisions deserve careful thought.
+
+One thing worth considering: the coordination gaps your quiz revealed do not improve on their own. They tend to widen over time as life gets more complex.
+
+The simplest next step is our complimentary discovery meeting. Thirty minutes. No obligation.
+
+Or keep learning at your own pace with Matt Topley's daily newsletter.
+
+Either way, we are here when you are ready.
+
+The Lansing Street Advisors Team</div>
+  <div class="email-cta-row"><strong>CTA:</strong> Discovery meeting or newsletter signup</div>
+</div>
+
+<div class="email-card">
+  <div class="email-header">
+    <div class="email-meta">
+      <span class="email-id">WB2</span>
+      <span class="email-subject">A resource worth bookmarking</span>
+    </div>
+    <div class="email-tags">
+      <span class="email-tag tag-day">Post +5</span>
+      <span class="email-tag tag-sender">Matt Topley</span>
+    </div>
+  </div>
+  <div class="email-body">{{first_name}},
+
+This is the last email in this series. I want to leave you with something genuinely useful.
+
+<strong>The Four Pillars of Financial Success:</strong>
+
+1. <strong>Wealth Enhancement</strong> -- Cash flow planning, tax mitigation, lifestyle maintenance.
+2. <strong>Wealth Transfer</strong> -- Estate planning, trusts, wills, life insurance.
+3. <strong>Wealth Protection</strong> -- Safeguarding against market volatility and the unexpected.
+4. <strong>Investment Consulting</strong> -- Comprehensive portfolio strategy designed for your goals.
+
+When these four pillars work together as a system, families preserve and grow wealth across generations. When they operate in silos, wealth erodes.
+
+If the time is ever right for a conversation, we are here:
+lansingadv.com/consultation | (215) 718-2063
+
+Wishing you and your family the best,
+Matt Topley
+Founder & President</div>
+  <div class="email-cta-row"><strong>CTA:</strong> Discovery meeting (final, soft)</div>
+</div>
+
+</div>
+</body>
+</html>

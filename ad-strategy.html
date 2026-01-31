@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ad Strategy - Lansing Street Advisors Quiz Funnel</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Source+Sans+3:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --color-primary: #1B365D;
+  --color-primary-dark: #122440;
+  --color-primary-light: #25516D;
+  --color-secondary: #B29D62;
+  --color-bg: #FAFAF8;
+  --color-bg-card: #FFFFFF;
+  --color-bg-alt: #F5F3EF;
+  --color-text-primary: #1B365D;
+  --color-text-body: #3D3D3D;
+  --color-text-secondary: #5A6A7A;
+  --color-text-muted: #8B95A2;
+  --color-border: #E2DFD8;
+  --font-heading: 'Playfair Display', Georgia, serif;
+  --font-body: 'Source Sans 3', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: var(--font-body); background: var(--color-bg); color: var(--color-text-body); line-height: 1.6; }
+.page-header {
+  background: linear-gradient(135deg, var(--color-primary-dark) 0%, var(--color-primary) 40%, var(--color-primary-light) 100%);
+  color: white;
+  padding: 48px 24px;
+  text-align: center;
+}
+.page-header h1 { font-family: var(--font-heading); font-size: 2.25rem; font-weight: 700; margin-bottom: 8px; }
+.page-header p { font-size: 1.125rem; opacity: 0.85; }
+.container { max-width: 900px; margin: 0 auto; padding: 32px 24px 64px; }
+.section { margin-bottom: 48px; }
+.section h2 {
+  font-family: var(--font-heading);
+  font-size: 1.75rem;
+  color: var(--color-text-primary);
+  margin-bottom: 16px;
+  padding-bottom: 12px;
+  border-bottom: 2px solid var(--color-border);
+}
+.section h3 {
+  font-family: var(--font-heading);
+  font-size: 1.25rem;
+  color: var(--color-text-primary);
+  margin-top: 24px;
+  margin-bottom: 8px;
+}
+.section p { margin-bottom: 12px; }
+.platform-badge {
+  display: inline-block;
+  padding: 4px 14px;
+  border-radius: 9999px;
+  font-weight: 600;
+  font-size: 0.75rem;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  margin-bottom: 12px;
+}
+.badge-google { background: #E8F0FE; color: #1A73E8; }
+.badge-meta { background: #E7F3FF; color: #1877F2; }
+.badge-linkedin { background: #E8F1FA; color: #0A66C2; }
+.badge-testing { background: rgba(178,157,98,0.12); color: #8E7D4E; }
+.ad-card {
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  padding: 24px;
+  margin-bottom: 16px;
+}
+.ad-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 12px;
+}
+.ad-card-label {
+  font-weight: 600;
+  color: var(--color-text-primary);
+  font-size: 0.875rem;
+}
+.ad-card-angle {
+  font-size: 0.6875rem;
+  padding: 2px 10px;
+  border-radius: 9999px;
+  background: rgba(27,54,93,0.08);
+  color: var(--color-primary);
+  font-weight: 500;
+}
+.ad-field { margin-bottom: 12px; }
+.ad-field-label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  color: var(--color-text-muted);
+  margin-bottom: 2px;
+}
+.ad-field-value {
+  font-size: 0.9375rem;
+  color: var(--color-text-body);
+}
+.ad-field-value.headline {
+  font-family: var(--font-heading);
+  font-weight: 600;
+  color: var(--color-text-primary);
+  font-size: 1.0625rem;
+}
+.keywords-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 8px;
+}
+.keyword-tag {
+  display: inline-block;
+  padding: 2px 10px;
+  background: var(--color-bg-alt);
+  border: 1px solid var(--color-border);
+  border-radius: 9999px;
+  font-size: 0.75rem;
+  color: var(--color-text-secondary);
+}
+.highlight-box {
+  background: linear-gradient(135deg, rgba(178,157,98,0.08), rgba(178,157,98,0.04));
+  border-left: 3px solid var(--color-secondary);
+  border-radius: 0 8px 8px 0;
+  padding: 16px 20px;
+  margin: 16px 0;
+}
+.highlight-box strong { color: var(--color-secondary); }
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 16px 0;
+  font-size: 0.9375rem;
+}
+th { background: var(--color-primary); color: white; padding: 10px 14px; text-align: left; font-weight: 600; font-size: 0.8125rem; text-transform: uppercase; }
+td { padding: 10px 14px; border-bottom: 1px solid var(--color-border); vertical-align: top; }
+tr:nth-child(even) { background: var(--color-bg-alt); }
+ul { padding-left: 24px; margin-bottom: 12px; }
+li { margin-bottom: 6px; }
+@media (max-width: 640px) {
+  .page-header h1 { font-size: 1.75rem; }
+  .container { padding: 16px; }
+  .section h2 { font-size: 1.375rem; }
+  table { font-size: 0.8125rem; }
+}
+</style>
+</head>
+<body>
+
+<div class="page-header">
+  <h1>Ad Strategy</h1>
+  <p>Platform-specific advertising variations for the Wealth Strategy Score quiz funnel</p>
+</div>
+
+<div class="container">
+
+<!-- GOOGLE ADS -->
+<div class="section">
+  <span class="platform-badge badge-google">GOOGLE ADS</span>
+  <h2>Google Search Ads</h2>
+  <p>Target high-intent searchers actively looking for wealth management and financial planning services in the Philadelphia metro area.</p>
+
+  <div class="ad-card">
+    <div class="ad-card-header">
+      <span class="ad-card-label">Variation 1</span>
+      <span class="ad-card-angle">Fiduciary Trust Gap</span>
+    </div>
+    <div class="ad-field">
+      <div class="ad-field-label">Headline 1</div>
+      <div class="ad-field-value headline">Is Your Advisor a Fiduciary? | Free Assessment</div>
+    </div>
+    <div class="ad-field">
+      <div class="ad-field-label">Headline 2</div>
+      <div class="ad-field-value headline">83% Think Their Advisor Is. Only 15% Are.</div>
+    </div>
+    <div class="ad-field">
+      <div class="ad-field-label">Headline 3</div>
+      <div class="ad-field-value headline">Lansing Street Advisors | SEC Registered</div>
+    </div>
+    <div class="ad-field">
+      <div class="ad-field-label">Description 1</div>
+      <div class="ad-field-value">Take the free 2-minute Wealth Strategy Score. Discover coordination gaps in your financial plan. Get personalized recommendations from a SEC-registered fiduciary firm.</div>
+    </div>
+    <div class="ad-field">
+      <div class="ad-field-label">Description 2</div>
+      <div class="ad-field-value">Lansing Street Advisors manages $500M for families in Greater Philadelphia. Independent. Fiduciary. Conflict-free. Take the free assessment today.</div>
+    </div>
+    <div class="ad-field">
+      <div class="ad-field-label">Target Keywords</div>
+      <div class="keywords-list">
+        <span class="keyword-tag">fiduciary advisor near me</span>
+        <span class="keyword-tag">fiduciary financial advisor</span>
+        <span class="keyword-tag">independent financial advisor Philadelphia</span>
+        <span class="keyword-tag">fiduciary wealth management</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="ad-card">
+    <div class="ad-card-header">
+      <span class="ad-card-label">Variation 2</span>
+      <span class="ad-card-angle">Local Wealth Management</span>
+    </div>
+    <div class="ad-field">
+      <div class="ad-field-label">Headline 1</div>
+      <div class="ad-field-value headline">Wealth Management Philadelphia | Free Score</div>
+    </div>
+    <div class="ad-field">
+      <div class="ad-field-label">Headline 2</div>
+      <div class="ad-field-value headline">How Coordinated Is Your Financial Life?</div>
+    </div>
+    <div class="ad-field">
+      <div class="ad-field-label">Headline 3</div>
+      <div class="ad-field-value headline">$500M AUM | Family Office Services</div>
+    </div>
+    <div class="ad-field">
+      <div class="ad-field-label">Description 1</div>
+      <div class="ad-field-value">Take the free Wealth Strategy Score assessment. 7 questions, 2 minutes. See your radar chart across 5 financial dimensions. Lansing Street Advisors, Ambler PA.</div>
+    </div>
+    <div class="ad-field">
+      <div class="ad-field-label">Description 2</div>
+      <div class="ad-field-value">Most families with $1M+ have coordination gaps costing them thousands annually. Find yours. Free assessment from a SEC-registered fiduciary firm in Montgomery County.</div>
+    </div>
+    <div class="ad-field">
+      <div class="ad-field-label">Target Keywords</div>
+      <div class="keywords-list">
+        <span class="keyword-tag">wealth management Philadelphia</span>
+        <span class="keyword-tag">wealth management near me</span>
+        <span class="keyword-tag">financial advisor Montgomery County PA</span>
+        <span class="keyword-tag">family office Philadelphia</span>
+      </div>
+    </div>
+  </div>
+
+  <div class="ad-card">
+    <div class="ad-card-header">
+      <span class="ad-card-label">Variation 3</span>
+      <span class="ad-card-angle">Work-Optional</span>
+    </div>
+    <div class="ad-field">
+      <div class="ad-field-label">Headline 1</div>
+      <div class="ad-field-value headline">Can You Afford to Retire? | Free Assessment</div>
+    </div>
+    <div class="ad-field">
+      <div class="ad-field-label">Headline 2</div>
+      <div class="ad-field-value headline">Your Work-Optional Number May Surprise You</div>
+    </div>
+    <div class="ad-field">
+      <div class="ad-field-label">Headline 3</div>
+      <div class="ad-field-value headline">25+ Years of Wealth Strategy Experience</div>
+    </div>
+    <div class="ad-field">
+      <div class="ad-field-label">Description 1</div>
+      <div class="ad-field-value">Most families overestimate what they need to make work optional by 20-30%. Take the free 2-minute Wealth Strategy Score and find out where you really stand.</div>
+    </div>
+    <div class="ad-field">
+      <div class="ad-field-label">Description 2</div>
+      <div class="ad-field-value">Helping families make work optional since 2020. Get your personalized score, radar chart, and actionable recommendations. No sign-up needed to start.</div>
+    </div>
+    <div class="ad-field">
+      <div class="ad-field-label">Target Keywords</div>
+      <div class="keywords-list">
+        <span class="keyword-tag">can I afford to retire</span>
+        <span class="keyword-tag">retirement planning Philadelphia</span>
+        <span class="keyword-tag">early retirement financial advisor</span>
+        <span class="keyword-tag">wealth advisor retirement planning</span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- FACEBOOK / INSTAGRAM ADS -->
+<div class="section">
+  <span class="platform-badge badge-meta">FACEBOOK / INSTAGRAM</span>
+  <h2>Facebook & Instagram Ads</h2>
+  <p>Visual-first ads targeting affluent homeowners in the Greater Philadelphia area. Three hooks per temperature segment.</p>
+
+  <h3>Hot Segment Hooks (Action-Oriented)</h3>
+  <div class="ad-card">
+    <div class="ad-card-header">
+      <span class="ad-card-label">Hook 1: The Coordination Gap</span>
+      <span class="ad-card-angle">Pain Awareness</span>
+    </div>
+    <div class="ad-field">
+      <div class="ad-field-label">Primary Text</div>
+      <div class="ad-field-value">Most families with $1M+ have 4-7 financial professionals who never talk to each other. Your CPA does not know what your broker is doing. Your estate plan does not reflect your current investments. And nobody is looking at the full picture. That gap is costing you. Take the free 2-minute Wealth Strategy Score to find out how much.</div>
+    </div>
+    <div class="ad-field">
+      <div class="ad-field-label">Headline</div>
+      <div class="ad-field-value headline">What's Your Wealth Strategy Score?</div>
+    </div>
+    <div class="ad-field">
+      <div class="ad-field-label">CTA Button</div>
+      <div class="ad-field-value">Take the Assessment</div>
+    </div>
+  </div>
+
+  <div class="ad-card">
+    <div class="ad-card-header">
+      <span class="ad-card-label">Hook 2: Fiduciary Challenge</span>
+      <span class="ad-card-angle">Trust Gap</span>
+    </div>
+    <div class="ad-field">
+      <div class="ad-field-label">Primary Text</div>
+      <div class="ad-field-value">83% of Americans think their financial advisor is a fiduciary. Only 15% actually are. The difference? A fiduciary is legally required to put your interests first. A broker is not. If you are not sure which you have, this free 2-minute assessment will help you understand where your financial life stands. No judgment. Just clarity.</div>
+    </div>
+    <div class="ad-field">
+      <div class="ad-field-label">Headline</div>
+      <div class="ad-field-value headline">Is Your Advisor Actually on Your Side?</div>
+    </div>
+    <div class="ad-field">
+      <div class="ad-field-label">CTA Button</div>
+      <div class="ad-field-value">Find Out Now</div>
+    </div>
+  </div>
+
+  <div class="ad-card">
+    <div class="ad-card-header">
+      <span class="ad-card-label">Hook 3: Tax Drain</span>
+      <span class="ad-card-angle">Financial Pain</span>
+    </div>
+    <div class="ad-field">
+      <div class="ad-field-label">Primary Text</div>
+      <div class="ad-field-value">The average high-net-worth family overpays $30,000 to $80,000 in taxes every year. Not because their accountant is bad. Because their accountant, advisor, estate attorney, and insurance agent are not working together. This free Wealth Strategy Score reveals where your coordination gaps are and what they may be costing your family.</div>
+    </div>
+    <div class="ad-field">
+      <div class="ad-field-label">Headline</div>
+      <div class="ad-field-value headline">How Much Are Coordination Gaps Costing You?</div>
+    </div>
+    <div class="ad-field">
+      <div class="ad-field-label">CTA Button</div>
+      <div class="ad-field-value">Get Your Free Score</div>
+    </div>
+  </div>
+
+  <h3>Warm Segment Hooks (Consideration)</h3>
+  <div class="ad-card">
+    <div class="ad-card-header">
+      <span class="ad-card-label">Hook 1: Work-Optional</span>
+      <span class="ad-card-angle">Aspiration</span>
+    </div>
+    <div class="ad-field">
+      <div class="ad-field-label">Primary Text</div>
+      <div class="ad-field-value">There is a specific number that would make work optional for your family. Not a guess. A real number based on your lifestyle, taxes, and cash flow needs. Most people have never calculated it. This free 2-minute assessment helps you understand how close you might already be.</div>
+    </div>
+    <div class="ad-field">
+      <div class="ad-field-label">Headline</div>
+      <div class="ad-field-value headline">Do You Know Your Work-Optional Number?</div>
+    </div>
+    <div class="ad-field">
+      <div class="ad-field-label">CTA Button</div>
+      <div class="ad-field-value">Take the Assessment</div>
+    </div>
+  </div>
+
+  <div class="ad-card">
+    <div class="ad-card-header">
+      <span class="ad-card-label">Hook 2: Legacy</span>
+      <span class="ad-card-angle">Generational</span>
+    </div>
+    <div class="ad-field">
+      <div class="ad-field-label">Primary Text</div>
+      <div class="ad-field-value">70% of family wealth disappears by the second generation. 90% by the third. The families who beat those odds do one thing differently: they coordinate. Their investments, taxes, estate plan, and protection all work as one system. How coordinated is your financial life? Find out in 2 minutes.</div>
+    </div>
+    <div class="ad-field">
+      <div class="ad-field-label">Headline</div>
+      <div class="ad-field-value headline">Will Your Wealth Outlast You?</div>
+    </div>
+    <div class="ad-field">
+      <div class="ad-field-label">CTA Button</div>
+      <div class="ad-field-value">Get Your Score</div>
+    </div>
+  </div>
+
+  <div class="ad-card">
+    <div class="ad-card-header">
+      <span class="ad-card-label">Hook 3: Radar Chart Curiosity</span>
+      <span class="ad-card-angle">Curiosity</span>
+    </div>
+    <div class="ad-field">
+      <div class="ad-field-label">Primary Text</div>
+      <div class="ad-field-value">Your financial life has five dimensions: Tax Efficiency, Estate Planning, Investment Strategy, Cash Flow, and Risk Management. This free assessment maps all five and shows you exactly where the gaps are. Takes 2 minutes. Gives you a personalized radar chart and actionable tips.</div>
+    </div>
+    <div class="ad-field">
+      <div class="ad-field-label">Headline</div>
+      <div class="ad-field-value headline">See Your Wealth Radar Chart</div>
+    </div>
+    <div class="ad-field">
+      <div class="ad-field-label">CTA Button</div>
+      <div class="ad-field-value">Start the Assessment</div>
+    </div>
+  </div>
+
+  <h3>Cold Segment Hooks (Awareness)</h3>
+  <div class="ad-card">
+    <div class="ad-card-header">
+      <span class="ad-card-label">Hook 1: Education</span>
+      <span class="ad-card-angle">Informational</span>
+    </div>
+    <div class="ad-field">
+      <div class="ad-field-label">Primary Text</div>
+      <div class="ad-field-value">Not sure if you need a financial advisor? You are not alone. This free 7-question assessment helps you understand where your financial life stands across five key dimensions. No sales pitch. Just a personalized score and actionable insights.</div>
+    </div>
+    <div class="ad-field">
+      <div class="ad-field-label">Headline</div>
+      <div class="ad-field-value headline">How Healthy Is Your Financial Plan?</div>
+    </div>
+    <div class="ad-field">
+      <div class="ad-field-label">CTA Button</div>
+      <div class="ad-field-value">Take the Free Quiz</div>
+    </div>
+  </div>
+
+  <div class="ad-card">
+    <div class="ad-card-header">
+      <span class="ad-card-label">Hook 2: Market Anxiety</span>
+      <span class="ad-card-angle">Fear Reduction</span>
+    </div>
+    <div class="ad-field">
+      <div class="ad-field-label">Primary Text</div>
+      <div class="ad-field-value">Worried about the next market downturn? That anxiety might be costing you more than the downturn would. Fear-driven decisions, sitting in too much cash, and reactive selling destroy more wealth than market volatility. This free assessment shows you where your portfolio stands.</div>
+    </div>
+    <div class="ad-field">
+      <div class="ad-field-label">Headline</div>
+      <div class="ad-field-value headline">Is Market Anxiety Costing You?</div>
+    </div>
+    <div class="ad-field">
+      <div class="ad-field-label">CTA Button</div>
+      <div class="ad-field-value">Get Your Free Score</div>
+    </div>
+  </div>
+
+  <div class="ad-card">
+    <div class="ad-card-header">
+      <span class="ad-card-label">Hook 3: Simple Curiosity</span>
+      <span class="ad-card-angle">Low Friction</span>
+    </div>
+    <div class="ad-field">
+      <div class="ad-field-label">Primary Text</div>
+      <div class="ad-field-value">7 questions. 2 minutes. A personalized wealth strategy score with your radar chart across 5 financial dimensions. Free. No sign-up to start. Created by Lansing Street Advisors, a SEC-registered fiduciary firm managing $500M for families in Greater Philadelphia.</div>
+    </div>
+    <div class="ad-field">
+      <div class="ad-field-label">Headline</div>
+      <div class="ad-field-value headline">What's Your Wealth Strategy Score?</div>
+    </div>
+    <div class="ad-field">
+      <div class="ad-field-label">CTA Button</div>
+      <div class="ad-field-value">Take the Quiz</div>
+    </div>
+  </div>
+
+  <h3>Targeting Recommendations</h3>
+  <div class="highlight-box">
+    <strong>Primary audience:</strong> Ages 40-65, household income $200K+, homeowners in Montgomery County PA, Bucks County PA, Chester County PA, Delaware County PA, and Philadelphia. Interests: investing, retirement planning, financial planning, wealth management, estate planning.
+  </div>
+  <div class="highlight-box">
+    <strong>Custom audiences:</strong> Upload existing client email list for exclusion (no ads to current clients). Create lookalike audience from quiz completions for scaling. Retarget quiz starters who did not complete.
+  </div>
+</div>
+
+<!-- LINKEDIN ADS -->
+<div class="section">
+  <span class="platform-badge badge-linkedin">LINKEDIN</span>
+  <h2>LinkedIn Ads</h2>
+  <p>B2B-focused variations targeting business owners, executives, and professionals in the Philadelphia metro area.</p>
+
+  <div class="ad-card">
+    <div class="ad-card-header">
+      <span class="ad-card-label">Variation 1: Business Owner Focus</span>
+      <span class="ad-card-angle">Exit Planning</span>
+    </div>
+    <div class="ad-field">
+      <div class="ad-field-label">Intro Text</div>
+      <div class="ad-field-value">If your business is your biggest asset, your wealth strategy has a concentration problem. Most entrepreneurs have 80%+ of their net worth tied to a single company with no exit plan. This free 2-minute assessment reveals your coordination gaps across five wealth dimensions. Created by Matt Topley, who has spent 25 years managing institutional portfolios and private real estate investments.</div>
+    </div>
+    <div class="ad-field">
+      <div class="ad-field-label">Headline</div>
+      <div class="ad-field-value headline">Business Owners: What's Your Wealth Strategy Score?</div>
+    </div>
+    <div class="ad-field">
+      <div class="ad-field-label">CTA Button</div>
+      <div class="ad-field-value">Take the Assessment</div>
+    </div>
+    <div class="ad-field">
+      <div class="ad-field-label">Targeting</div>
+      <div class="ad-field-value">Job titles: Founder, CEO, President, Owner, Managing Partner. Company size: 11-500. Industries: All. Geography: Greater Philadelphia DMA. Seniority: VP and above.</div>
+    </div>
+  </div>
+
+  <div class="ad-card">
+    <div class="ad-card-header">
+      <span class="ad-card-label">Variation 2: Executive Focus</span>
+      <span class="ad-card-angle">Work-Optional / Retirement</span>
+    </div>
+    <div class="ad-field">
+      <div class="ad-field-label">Intro Text</div>
+      <div class="ad-field-value">There is a specific number that makes work optional for your family. Not a rough estimate. A real number based on your lifestyle, tax situation, and cash flow needs. Most successful executives have never calculated theirs. This free 2-minute assessment maps your financial coordination across 5 dimensions and shows you where the gaps are. No sales pitch. Just clarity from a SEC-registered fiduciary firm.</div>
+    </div>
+    <div class="ad-field">
+      <div class="ad-field-label">Headline</div>
+      <div class="ad-field-value headline">Do You Know Your Work-Optional Number?</div>
+    </div>
+    <div class="ad-field">
+      <div class="ad-field-label">CTA Button</div>
+      <div class="ad-field-value">Get Your Free Score</div>
+    </div>
+    <div class="ad-field">
+      <div class="ad-field-label">Targeting</div>
+      <div class="ad-field-value">Job titles: CFO, VP Finance, EVP, SVP, Managing Director. Seniority: Director and above. Geography: Greater Philadelphia DMA. Function: Finance, Operations, General Management.</div>
+    </div>
+  </div>
+
+  <h3>LinkedIn Organic Strategy</h3>
+  <div class="highlight-box">
+    <strong>Matt Topley's personal profile</strong> should share the quiz link weekly with a personal insight or market commentary as context. LinkedIn organic reach for personal profiles is significantly higher than company pages. Example post format: market observation + "This is why coordination matters" + quiz link.
+  </div>
+</div>
+
+<!-- A/B TESTING -->
+<div class="section">
+  <span class="platform-badge badge-testing">A/B TESTING</span>
+  <h2>A/B Testing Recommendations</h2>
+
+  <table>
+    <tr><th>Test</th><th>Variable A</th><th>Variable B</th><th>Success Metric</th></tr>
+    <tr>
+      <td>Headline angle</td>
+      <td>"What's Your Wealth Strategy Score?"</td>
+      <td>"How Coordinated Is Your Financial Life?"</td>
+      <td>Click-through rate</td>
+    </tr>
+    <tr>
+      <td>Social proof vs. curiosity</td>
+      <td>"$500M AUM, SEC-registered fiduciary" (authority)</td>
+      <td>"7 questions, 2 minutes, personalized radar chart" (curiosity)</td>
+      <td>Click-through rate</td>
+    </tr>
+    <tr>
+      <td>Pain vs. aspiration</td>
+      <td>"Coordination gaps may be costing you $30K+/year" (pain)</td>
+      <td>"Do you know your work-optional number?" (aspiration)</td>
+      <td>Quiz completion rate</td>
+    </tr>
+    <tr>
+      <td>CTA button text</td>
+      <td>"Take the Assessment"</td>
+      <td>"Get Your Free Score"</td>
+      <td>Click-through rate</td>
+    </tr>
+    <tr>
+      <td>Landing page length</td>
+      <td>Full landing page (benefits, social proof, how it works)</td>
+      <td>Short page (headline, subheadline, CTA only)</td>
+      <td>Quiz start rate</td>
+    </tr>
+  </table>
+
+  <div class="highlight-box">
+    <strong>Testing priority:</strong> Start with headline angle testing (highest impact on CTR). Run each test for a minimum of 500 impressions per variant before drawing conclusions. Rotate winning headlines into other platforms.
+  </div>
+</div>
+
+</div>
+</body>
+</html>

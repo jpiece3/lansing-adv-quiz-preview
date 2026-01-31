@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Copy Explainer - Lansing Street Advisors Quiz Funnel</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Source+Sans+3:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --color-primary: #1B365D;
+  --color-primary-dark: #122440;
+  --color-primary-light: #25516D;
+  --color-secondary: #B29D62;
+  --color-secondary-light: #C5A55A;
+  --color-bg: #FAFAF8;
+  --color-bg-card: #FFFFFF;
+  --color-bg-alt: #F5F3EF;
+  --color-text-primary: #1B365D;
+  --color-text-body: #3D3D3D;
+  --color-text-secondary: #5A6A7A;
+  --color-text-muted: #8B95A2;
+  --color-border: #E2DFD8;
+  --color-temp-hot: #22C55E;
+  --color-temp-warm: #F59E0B;
+  --color-temp-cold: #3B82F6;
+  --font-heading: 'Playfair Display', Georgia, serif;
+  --font-body: 'Source Sans 3', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body {
+  font-family: var(--font-body);
+  background: var(--color-bg);
+  color: var(--color-text-body);
+  line-height: 1.6;
+}
+.page-header {
+  background: linear-gradient(135deg, var(--color-primary-dark) 0%, var(--color-primary) 40%, var(--color-primary-light) 100%);
+  color: white;
+  padding: 48px 24px;
+  text-align: center;
+}
+.page-header h1 {
+  font-family: var(--font-heading);
+  font-size: 2.25rem;
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+.page-header p {
+  font-size: 1.125rem;
+  opacity: 0.85;
+  max-width: 600px;
+  margin: 0 auto;
+}
+.container {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 32px 24px 64px;
+}
+.toc {
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  padding: 24px;
+  margin-bottom: 40px;
+}
+.toc h3 {
+  font-family: var(--font-heading);
+  font-size: 1.125rem;
+  color: var(--color-text-primary);
+  margin-bottom: 12px;
+}
+.toc ol {
+  padding-left: 24px;
+}
+.toc li {
+  margin-bottom: 6px;
+}
+.toc a {
+  color: var(--color-primary);
+  text-decoration: none;
+  font-weight: 500;
+}
+.toc a:hover {
+  color: var(--color-secondary);
+  text-decoration: underline;
+}
+.section {
+  margin-bottom: 48px;
+}
+.section h2 {
+  font-family: var(--font-heading);
+  font-size: 1.75rem;
+  color: var(--color-text-primary);
+  margin-bottom: 16px;
+  padding-bottom: 12px;
+  border-bottom: 2px solid var(--color-border);
+}
+.section h3 {
+  font-family: var(--font-heading);
+  font-size: 1.25rem;
+  color: var(--color-text-primary);
+  margin-top: 24px;
+  margin-bottom: 8px;
+}
+.section p {
+  margin-bottom: 12px;
+}
+.collapsible {
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  margin-bottom: 16px;
+  overflow: hidden;
+}
+.collapsible-header {
+  padding: 16px 20px;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-weight: 600;
+  color: var(--color-text-primary);
+  user-select: none;
+  transition: background 200ms;
+}
+.collapsible-header:hover {
+  background: var(--color-bg-alt);
+}
+.collapsible-header .arrow {
+  font-size: 0.875rem;
+  color: var(--color-text-muted);
+  transition: transform 300ms;
+}
+.collapsible.open .collapsible-header .arrow {
+  transform: rotate(180deg);
+}
+.collapsible-body {
+  display: none;
+  padding: 0 20px 20px;
+  border-top: 1px solid var(--color-border);
+}
+.collapsible.open .collapsible-body {
+  display: block;
+}
+.rationale-card {
+  background: var(--color-bg-alt);
+  border-radius: 8px;
+  padding: 16px;
+  margin-top: 12px;
+}
+.rationale-card strong {
+  color: var(--color-primary);
+}
+.badge {
+  display: inline-block;
+  padding: 2px 10px;
+  border-radius: 9999px;
+  font-size: 0.6875rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+}
+.badge-type {
+  background: rgba(178,157,98,0.12);
+  color: #8E7D4E;
+}
+.badge-hot {
+  background: rgba(34,197,94,0.1);
+  color: #16a34a;
+}
+.badge-warm {
+  background: rgba(245,158,11,0.1);
+  color: #d97706;
+}
+.badge-cold {
+  background: rgba(59,130,246,0.1);
+  color: #2563eb;
+}
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 16px 0;
+  font-size: 0.9375rem;
+}
+th {
+  background: var(--color-primary);
+  color: white;
+  padding: 10px 14px;
+  text-align: left;
+  font-weight: 600;
+  font-size: 0.8125rem;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+td {
+  padding: 10px 14px;
+  border-bottom: 1px solid var(--color-border);
+  vertical-align: top;
+}
+tr:nth-child(even) { background: var(--color-bg-alt); }
+.highlight-box {
+  background: linear-gradient(135deg, rgba(178,157,98,0.08), rgba(178,157,98,0.04));
+  border-left: 3px solid var(--color-secondary);
+  border-radius: 0 8px 8px 0;
+  padding: 16px 20px;
+  margin: 16px 0;
+}
+.highlight-box strong {
+  color: var(--color-secondary);
+}
+ul, ol {
+  padding-left: 24px;
+  margin-bottom: 12px;
+}
+li { margin-bottom: 6px; }
+@media (max-width: 640px) {
+  .page-header h1 { font-size: 1.75rem; }
+  .page-header { padding: 32px 16px; }
+  .container { padding: 16px 16px 48px; }
+  .section h2 { font-size: 1.375rem; }
+  table { font-size: 0.8125rem; }
+  th, td { padding: 8px 10px; }
+}
+</style>
+</head>
+<body>
+
+<div class="page-header">
+  <h1>Quiz Copy Explainer</h1>
+  <p>A comprehensive breakdown of every copy decision in the Lansing Street Advisors Wealth Strategy Score quiz funnel.</p>
+</div>
+
+<div class="container">
+
+<div class="toc">
+  <h3>Contents</h3>
+  <ol>
+    <li><a href="#question-rationale">Question Rationale</a></li>
+    <li><a href="#answer-psychology">Answer Psychology</a></li>
+    <li><a href="#scoring-logic">Scoring Logic Explained</a></li>
+    <li><a href="#email-strategy">Email Sequence Strategy</a></li>
+    <li><a href="#persuasion">Persuasion Techniques Used</a></li>
+    <li><a href="#customer-segments">Customer Segments Explained</a></li>
+  </ol>
+</div>
+
+<!-- SECTION 1: QUESTION RATIONALE -->
+<div class="section" id="question-rationale">
+  <h2>1. Question Rationale</h2>
+  <p>Each question in the quiz was designed to serve a specific diagnostic and psychological purpose. Here is why each one was chosen.</p>
+
+  <div class="collapsible open">
+    <div class="collapsible-header" onclick="toggleCollapsible(this)">
+      Q1: Financial Life Coordination <span class="badge badge-type">card_selection</span> <span class="arrow">&#9660;</span>
+    </div>
+    <div class="collapsible-body">
+      <div class="rationale-card">
+        <strong>Why this question exists:</strong> This is the gateway question. It immediately frames the quiz around coordination, not just wealth. It forces the respondent to self-diagnose their biggest structural problem: fragmentation vs. integration.
+      </div>
+      <p style="margin-top:12px"><strong>Strategic purpose:</strong> Surfaces the core Lansing Street value proposition (family office coordination) in the first interaction. Respondents who select "Completely Fragmented" or "Partially Connected" have just admitted the exact problem Lansing Street solves.</p>
+      <p><strong>Why card selection:</strong> Visual cards with icons and descriptions create an immersive first experience. The four options map to a clear spectrum from "needs help immediately" to "already well-served." Card selection is the most engaging first question type.</p>
+      <p><strong>Radar dimensions:</strong> Tax Efficiency (60%) + Cash Flow (40%). Fragmented finances almost always mean tax leakage and uncoordinated cash flow.</p>
+    </div>
+  </div>
+
+  <div class="collapsible">
+    <div class="collapsible-header" onclick="toggleCollapsible(this)">
+      Q2: Estate & Legacy Readiness <span class="badge badge-type">scale_slider</span> <span class="arrow">&#9660;</span>
+    </div>
+    <div class="collapsible-body">
+      <div class="rationale-card">
+        <strong>Why this question exists:</strong> Estate planning is the most emotionally charged aspect of wealth management. Asking about confidence in wealth transfer forces respondents to confront something most families avoid: whether their estate plan actually works.
+      </div>
+      <p style="margin-top:12px"><strong>Strategic purpose:</strong> Low confidence scores (1-5) directly correlate with Lansing Street's Wealth Transfer and Wealth Protection pillars. This question identifies Legacy Builders and Navigating Families.</p>
+      <p><strong>Why scale slider:</strong> A 1-10 confidence scale allows nuanced self-assessment. Sliders create tactile engagement. The act of sliding to a low number creates a visceral "I need to fix this" moment.</p>
+      <p><strong>Radar dimensions:</strong> Estate Planning (100%). Direct measurement of their perceived readiness.</p>
+    </div>
+  </div>
+
+  <div class="collapsible">
+    <div class="collapsible-header" onclick="toggleCollapsible(this)">
+      Q3: Wealth Concerns <span class="badge badge-type">tag_cloud</span> <span class="arrow">&#9660;</span>
+    </div>
+    <div class="collapsible-body">
+      <div class="rationale-card">
+        <strong>Why this question exists:</strong> Multi-select reveals the breadth of concerns. Families who select 4+ tags are signaling high complexity and high need. Each tag maps to a specific profile and service recommendation.
+      </div>
+      <p style="margin-top:12px"><strong>Strategic purpose:</strong> This is the primary profile differentiation question. The combination of tags selected here drives which of the five profiles the respondent is assigned. "No exit strategy for my business" tags Strategic Grower. "Navigating a major life transition" tags Navigating Family. "Not sure if my advisor has my best interest" tags Wealth Protector.</p>
+      <p><strong>Why tag cloud:</strong> Multi-select allows respondents to express the full complexity of their situation. Each tag carries specific scoring weight. The question normalizes having multiple concerns ("most affluent families deal with several of these").</p>
+      <p><strong>Radar dimensions:</strong> Distributed across all five dimensions based on tag type. This is the widest-reaching question in the quiz.</p>
+    </div>
+  </div>
+
+  <div class="collapsible">
+    <div class="collapsible-header" onclick="toggleCollapsible(this)">
+      Q4: Investment Confidence <span class="badge badge-type">emoji_scale</span> <span class="arrow">&#9660;</span>
+    </div>
+    <div class="collapsible-body">
+      <div class="rationale-card">
+        <strong>Why this question exists:</strong> Market anxiety is one of the strongest emotional drivers for seeking professional guidance. This question captures the respondent's emotional state around investing, which is a powerful predictor of buying readiness.
+      </div>
+      <p style="margin-top:12px"><strong>Strategic purpose:</strong> "Losing sleep over it" respondents are likely hot leads experiencing acute anxiety. This maps directly to Lansing Street's Investment Consulting pillar and Matt Topley's 25-year track record through every market cycle.</p>
+      <p><strong>Why emoji scale:</strong> Emojis create an emotional, intuitive response rather than a rational one. The progression from worried to confident is immediately understood. This question type provides a psychological change of pace after the analytical tag cloud.</p>
+      <p><strong>Radar dimensions:</strong> Investment Strategy (100%). Direct emotional measurement of investment confidence.</p>
+    </div>
+  </div>
+
+  <div class="collapsible">
+    <div class="collapsible-header" onclick="toggleCollapsible(this)">
+      Q5: Advisor Relationship <span class="badge badge-type">multiple_choice</span> <span class="arrow">&#9660;</span>
+    </div>
+    <div class="collapsible-body">
+      <div class="rationale-card">
+        <strong>Why this question exists:</strong> This is the competitive displacement question. It reveals the respondent's current advisor situation and whether there is an opening for Lansing Street. "Not sure they are a fiduciary" and "do not coordinate" are direct competitive signals.
+      </div>
+      <p style="margin-top:12px"><strong>Strategic purpose:</strong> Identifies three key opportunities: (1) no advisor at all (greenfield), (2) non-fiduciary advisor (displacement), (3) uncoordinated team (family office upsell). The answer directly informs CTA strategy on the results page.</p>
+      <p><strong>Why multiple choice:</strong> Five distinct options cover the full spectrum of advisor relationships. Traditional multiple choice provides clarity for this factual question. The helper text ("this is about finding the right fit, not judging what you have") reduces defensiveness.</p>
+      <p><strong>Radar dimensions:</strong> Risk Management (60%) + Investment Strategy (40%). Current advisor quality directly impacts both.</p>
+    </div>
+  </div>
+
+  <div class="collapsible">
+    <div class="collapsible-header" onclick="toggleCollapsible(this)">
+      Q6: Work-Optional Clarity <span class="badge badge-type">yes_no_toggle</span> <span class="arrow">&#9660;</span>
+    </div>
+    <div class="collapsible-body">
+      <div class="rationale-card">
+        <strong>Why this question exists:</strong> This binary question connects directly to Lansing Street's tagline: "Helping Families Make Work Optional." Most affluent families have never calculated their true work-optional number. This question makes that gap visible in one click.
+      </div>
+      <p style="margin-top:12px"><strong>Strategic purpose:</strong> "No" answers (the majority) create immediate desire for the answer. The work-optional number becomes a natural conversation starter for discovery meetings. This question carries the highest single-answer score (15 points for "No").</p>
+      <p><strong>Why yes/no toggle:</strong> Binary simplicity after the complexity of previous questions. The decisiveness of yes/no creates a moment of honest self-assessment. Most respondents will click "No" and feel the weight of not knowing.</p>
+      <p><strong>Radar dimensions:</strong> Cash Flow (70%) + Tax Efficiency (30%). Not knowing your number implies gaps in both.</p>
+    </div>
+  </div>
+
+  <div class="collapsible">
+    <div class="collapsible-header" onclick="toggleCollapsible(this)">
+      Q7: Legacy Priority <span class="badge badge-type">star_rating</span> <span class="arrow">&#9660;</span>
+    </div>
+    <div class="collapsible-body">
+      <div class="rationale-card">
+        <strong>Why this question exists:</strong> The final question is intentionally aspirational. After six questions about gaps and concerns, this one asks about values. It ends the quiz on an emotional, forward-looking note that connects to the Lansing Street heritage story.
+      </div>
+      <p style="margin-top:12px"><strong>Strategic purpose:</strong> High-star respondents (4-5) are strong Legacy Builder candidates. The emotional weight of "non-negotiable" creates urgency around estate planning. This question also provides the bridge to the Kilkenny Castle heritage narrative in result copy.</p>
+      <p><strong>Why star rating:</strong> Stars are universally understood and fast to answer. The 1-5 scale maps cleanly to sentiment buckets. Ending with a star rating feels like a natural conclusion (rating the importance of legacy).</p>
+      <p><strong>Radar dimensions:</strong> Estate Planning (60%) + Risk Management (40%). Legacy priority directly drives both.</p>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 2: ANSWER PSYCHOLOGY -->
+<div class="section" id="answer-psychology">
+  <h2>2. Answer Psychology</h2>
+  <p>Every answer option is designed to feel like a mirror. When respondents see their situation reflected in an answer, they experience a moment of recognition that builds trust in the assessment.</p>
+
+  <div class="highlight-box">
+    <strong>Core principle:</strong> The quiz never tells people they have a problem. It lets them tell themselves. Self-selection creates ownership. When someone clicks "Completely Fragmented," they have just admitted the problem that Lansing Street solves. No sales copy could be more powerful than that admission.
+  </div>
+
+  <h3>High-Score Answers (Indicate Need)</h3>
+  <p>These answers signal gaps that Lansing Street's services directly address:</p>
+  <ul>
+    <li><strong>"Completely Fragmented"</strong> (Q1, 15pts) -- Admits the coordination problem. Tags: fragmented, family-office-need, high-pain.</li>
+    <li><strong>"Losing sleep over it"</strong> (Q4, 15pts) -- Reveals acute emotional distress around investments. Tags: high-anxiety, protection-need, advisor-change.</li>
+    <li><strong>"No, not really"</strong> (Q6, 15pts) -- Admits they do not know their work-optional number. Tags: work-optional-gap, enhancement-need, cash-flow-blind.</li>
+    <li><strong>"Non-negotiable" legacy</strong> (Q7, 15pts) -- Reveals deep emotional commitment to generational wealth. Tags: legacy-driven, transfer-urgent, estate-gap.</li>
+  </ul>
+
+  <h3>Low-Score Answers (Indicate Satisfaction)</h3>
+  <p>These answers indicate lower immediate need but still provide value for long-term nurturing:</p>
+  <ul>
+    <li><strong>"Fully Integrated"</strong> (Q1, 3pts) -- Already has coordination. Receives encouraging results and thought leadership content.</li>
+    <li><strong>"Confident and prepared"</strong> (Q4, 2pts) -- Low investment anxiety. May still benefit from tax or estate coordination.</li>
+    <li><strong>"Yes, I know my number"</strong> (Q6, 4pts) -- Has clarity on work-optional. Results focus on other dimensions.</li>
+  </ul>
+
+  <h3>The Multi-Select Dynamic (Q3)</h3>
+  <p>Question 3 is the most psychologically rich question. The tag cloud allows respondents to express the full scope of their concerns. Key dynamics:</p>
+  <ul>
+    <li>Selecting 4+ tags signals high complexity and high pain</li>
+    <li>The "Honestly, I am not sure what I do not know" option is the humility answer. It signals openness to education and is common in cold leads.</li>
+    <li>"Not sure if my advisor has my best interest" is the trust violation signal. It is the strongest predictor of advisor-change intent.</li>
+    <li>"Navigating a major life transition" overrides all other profile signals due to urgency</li>
+  </ul>
+</div>
+
+<!-- SECTION 3: SCORING LOGIC -->
+<div class="section" id="scoring-logic">
+  <h2>3. Scoring Logic Explained</h2>
+
+  <h3>Raw Score Calculation</h3>
+  <p>Each question contributes points to a raw score ranging from 7 (minimum) to 102 (maximum). Higher scores indicate larger coordination gaps and greater need for professional guidance.</p>
+
+  <div class="highlight-box">
+    <strong>Normalization formula:</strong> displayScore = Math.round(((rawScore - 7) / (102 - 7)) * 100)<br>
+    This maps the raw 7-102 range to a clean 0-100 display score.
+  </div>
+
+  <h3>Temperature Bands</h3>
+  <table>
+    <tr><th>Temperature</th><th>Score</th><th>Meaning</th><th>CTA Approach</th></tr>
+    <tr><td><span class="badge badge-hot">HOT</span></td><td>80-100</td><td>Significant gaps, high awareness, likely experiencing a triggering event</td><td>Direct: Schedule discovery meeting</td></tr>
+    <tr><td><span class="badge badge-warm">WARM</span></td><td>50-79</td><td>Recognizes gaps, solid foundation with room for improvement</td><td>Educational: Download resources, case studies</td></tr>
+    <tr><td><span class="badge badge-cold">COLD</span></td><td>0-49</td><td>Early awareness, strong position with refinement opportunities</td><td>Nurture: Newsletter, educational content</td></tr>
+  </table>
+
+  <h3>Radar Chart Dimensions</h3>
+  <p>The radar chart plots five dimensions on a 0-20 scale. Higher values indicate larger gaps. Each dimension draws from specific questions:</p>
+  <table>
+    <tr><th>Dimension</th><th>Primary Sources</th><th>What It Measures</th></tr>
+    <tr><td>Tax Efficiency</td><td>Q1 (60%), Q6 (30%), Q3 tags</td><td>How well tax strategy is coordinated with investments and estate</td></tr>
+    <tr><td>Estate Planning</td><td>Q2 (100%), Q7 (60%), Q3 tags</td><td>Readiness of wealth transfer, trusts, and beneficiary designations</td></tr>
+    <tr><td>Investment Strategy</td><td>Q4 (100%), Q5 (40%), Q3 tags</td><td>Confidence in portfolio positioning and professional oversight</td></tr>
+    <tr><td>Cash Flow</td><td>Q6 (70%), Q1 (40%), Q3 tags</td><td>Clarity on income needs and work-optional number</td></tr>
+    <tr><td>Risk Management</td><td>Q5 (60%), Q7 (40%), Q3 tags</td><td>Protection against market downturns and advisor conflicts</td></tr>
+  </table>
+
+  <h3>Profile Assignment</h3>
+  <p>Profiles are assigned by tag-based scoring, not just the numerical score. Each answer adds tags, and each tag has a weight for each profile. The profile with the highest weighted tag count wins.</p>
+  <p><strong>Priority order on tie:</strong> Navigating Family > Legacy Builder > Work-Optional Seeker > Wealth Protector > Strategic Grower</p>
+  <p><strong>Override rule:</strong> If the <code>life-transition</code> tag is present and the weighted score is 5 or higher, the Navigating Family profile is forced regardless of other tag scores. Life transitions take priority because they require immediate, coordinated action.</p>
+</div>
+
+<!-- SECTION 4: EMAIL STRATEGY -->
+<div class="section" id="email-strategy">
+  <h2>4. Email Sequence Strategy</h2>
+
+  <h3>Architecture: 5 Sequences, 14 Emails</h3>
+  <table>
+    <tr><th>Sequence</th><th>Emails</th><th>Trigger</th><th>Strategy</th></tr>
+    <tr><td>Welcome</td><td>3 (Days 0,2,5)</td><td>All completions</td><td>Deliver results, introduce coordination gap concept, share heritage story</td></tr>
+    <tr><td>Cold Nurture</td><td>4 (Days 1,3,7,10)</td><td>Score 0-49</td><td>Educate on financial phases, fiduciary duty, cost of fragmentation, DIY signals</td></tr>
+    <tr><td>Warm Activation</td><td>3 (Days 1,3,6)</td><td>Score 50-79</td><td>Detail coordination gaps, share case study pattern, personal invitation from Matt</td></tr>
+    <tr><td>Hot Path</td><td>2 (Days 1,4)</td><td>Score 80-100</td><td>Urgent gap attention, demystify discovery meeting process</td></tr>
+    <tr><td>Win-Back</td><td>2 (Post +1,+5)</td><td>No engagement</td><td>Gentle reminder, final value resource (Four Pillars)</td></tr>
+  </table>
+
+  <h3>Copy Principles</h3>
+  <ul>
+    <li><strong>Value before ask:</strong> Every email delivers insight before requesting action. Even the hot path emails lead with information about their coordination gaps.</li>
+    <li><strong>Matt Topley as voice:</strong> Most emails come from Matt personally. This builds the personal connection HNW clients expect and leverages his 25-year credibility.</li>
+    <li><strong>Heritage threading:</strong> The Kilkenny Castle story appears in W3. The "four pillars" framework appears in WB2. Heritage is woven in, not forced.</li>
+    <li><strong>No pricing:</strong> No email mentions fees or costs. The CTA is always "discovery meeting" (free) or educational content.</li>
+    <li><strong>Escalating specificity:</strong> Early emails are broad (coordination gap concept). Later emails are specific (your top 2 gaps, what a meeting looks like).</li>
+  </ul>
+
+  <h3>Cold vs. Warm vs. Hot Approach</h3>
+  <div class="highlight-box">
+    <strong>Cold (0-49):</strong> Education-first. Teach them what they do not know about fiduciary duty, financial phases, and coordination costs. No meeting asks until email C4 (Day 10), and even then it is soft. Primary goal: build trust through expertise.
+  </div>
+  <div class="highlight-box">
+    <strong>Warm (50-79):</strong> Insight-first. Show them their specific gaps and what closing them looks like (case study pattern). Meeting ask escalates from WA1 (soft mention) to WA3 (personal invitation from Matt). Primary goal: demonstrate the value of coordination.
+  </div>
+  <div class="highlight-box">
+    <strong>Hot (80-100):</strong> Urgency-first. Direct language about gap severity. Demystify the discovery meeting to remove friction. Only 2 emails because hot leads should convert quickly or not at all. Primary goal: get the meeting scheduled.
+  </div>
+</div>
+
+<!-- SECTION 5: PERSUASION TECHNIQUES -->
+<div class="section" id="persuasion">
+  <h2>5. Persuasion Techniques Used</h2>
+
+  <div class="collapsible open">
+    <div class="collapsible-header" onclick="toggleCollapsible(this)">
+      Self-Selection Bias <span class="arrow">&#9660;</span>
+    </div>
+    <div class="collapsible-body">
+      <p>When people choose answers that describe their problems, they are more receptive to solutions. The quiz never tells respondents they have coordination gaps. They tell themselves through their answer selections. This creates ownership of the problem and openness to the solution.</p>
+      <p><strong>Applied in:</strong> Every question, especially Q1 (fragmentation self-diagnosis) and Q6 (admitting they do not know their number).</p>
+    </div>
+  </div>
+
+  <div class="collapsible">
+    <div class="collapsible-header" onclick="toggleCollapsible(this)">
+      Sunk Cost / Commitment Escalation <span class="arrow">&#9660;</span>
+    </div>
+    <div class="collapsible-body">
+      <p>Each question answered is a micro-commitment. By question 7, the respondent has invested 2 minutes and revealed personal financial details. The email capture after all questions (not before) leverages this investment: they have already committed significant effort and want the payoff (their results).</p>
+      <p><strong>Applied in:</strong> Quiz flow structure (questions first, email capture last), progress messages ("Almost done. Two more questions.").</p>
+    </div>
+  </div>
+
+  <div class="collapsible">
+    <div class="collapsible-header" onclick="toggleCollapsible(this)">
+      The Barnum Effect (Personalization Illusion) <span class="arrow">&#9660;</span>
+    </div>
+    <div class="collapsible-body">
+      <p>The hidden insight and profile descriptions use specific-sounding language that resonates broadly. "Your answers suggest you think in generational timelines" feels uniquely personal but applies to anyone who rated legacy as important. The radar chart adds visual specificity that makes generic insights feel individually tailored.</p>
+      <p><strong>Applied in:</strong> Profile hidden insights, radar chart visualization, "Your answers reveal..." language.</p>
+    </div>
+  </div>
+
+  <div class="collapsible">
+    <div class="collapsible-header" onclick="toggleCollapsible(this)">
+      Social Proof Through Statistics <span class="arrow">&#9660;</span>
+    </div>
+    <div class="collapsible-body">
+      <p>The funnel uses verified statistics to create credibility and urgency:</p>
+      <ul>
+        <li>"83% of Americans think their advisor is a fiduciary. Only 15% actually are." (Trust gap)</li>
+        <li>"70% of family wealth is gone by the second generation." (Legacy urgency)</li>
+        <li>"The average HNW family overpays $30,000-$80,000 in taxes annually." (Financial pain)</li>
+        <li>"Most affluent families have 4-7 financial professionals who never talk to each other." (Fragmentation)</li>
+      </ul>
+      <p><strong>Applied in:</strong> Landing page copy, email sequences (W3, C2, C3), quiz intro.</p>
+    </div>
+  </div>
+
+  <div class="collapsible">
+    <div class="collapsible-header" onclick="toggleCollapsible(this)">
+      Authority Positioning <span class="arrow">&#9660;</span>
+    </div>
+    <div class="collapsible-body">
+      <p>Matt Topley's credentials are woven throughout, not listed upfront. The email sequence gradually reveals his track record: $1.5B hedge fund, $30B mutual fund growth, real estate fund, media appearances. This builds authority over time rather than overwhelming in the first touchpoint.</p>
+      <p><strong>Applied in:</strong> Email WA3 (personal invitation), landing page social proof, result page secondary CTA, email H2 (P.S. about fiduciary status).</p>
+    </div>
+  </div>
+
+  <div class="collapsible">
+    <div class="collapsible-header" onclick="toggleCollapsible(this)">
+      Loss Aversion Framing <span class="arrow">&#9660;</span>
+    </div>
+    <div class="collapsible-body">
+      <p>The quiz frames coordination gaps as costs, not missed opportunities. "Costing your family thousands" hits harder than "you could save thousands." The generational wealth statistic (70% gone by generation 2) triggers loss aversion around legacy, not gain seeking.</p>
+      <p><strong>Applied in:</strong> Landing page headline ("wealth gap"), email subjects ("This might be costing your family $30,000+ per year"), result page framing.</p>
+    </div>
+  </div>
+
+  <div class="collapsible">
+    <div class="collapsible-header" onclick="toggleCollapsible(this)">
+      The Curiosity Gap <span class="arrow">&#9660;</span>
+    </div>
+    <div class="collapsible-body">
+      <p>The hidden insight is the most psychologically compelling element on the results page. It promises "an unexpected finding" that creates a curiosity gap. Respondents cannot resist reading it. The hidden insight then delivers a pattern-matching observation that feels like genuine discovery.</p>
+      <p><strong>Applied in:</strong> Result page "Hidden Insight" section, landing page benefit #5 ("A Hidden Insight").</p>
+    </div>
+  </div>
+</div>
+
+<!-- SECTION 6: CUSTOMER SEGMENTS -->
+<div class="section" id="customer-segments">
+  <h2>6. Customer Segments Explained</h2>
+  <p>The quiz routes respondents into one of five profiles based on their tag accumulation. Each profile maps to specific Lansing Street services and receives tailored copy throughout the results and email sequences.</p>
+
+  <table>
+    <tr>
+      <th>Profile</th>
+      <th>Who They Are</th>
+      <th>Primary Pain</th>
+      <th>Best Services</th>
+      <th>Key Trigger Tags</th>
+      <th>Messaging Tone</th>
+    </tr>
+    <tr>
+      <td><strong>The Legacy Builder</strong></td>
+      <td>Established professionals/business owners (50-65) focused on multi-generational wealth transfer</td>
+      <td>Estate tax exposure, no succession plan, fear wealth will not survive past generation 2</td>
+      <td>Wealth Transfer, Wealth Protection, Family Office Services</td>
+      <td>legacy-concern, transfer-need, estate-gap, legacy-driven</td>
+      <td>Dignified, heritage-focused, stewardship</td>
+    </tr>
+    <tr>
+      <td><strong>The Work-Optional Seeker</strong></td>
+      <td>High-earning professionals (45-60) approaching or considering early retirement</td>
+      <td>No clear "work-optional number," portfolio not generating needed income, tax inefficiency</td>
+      <td>Wealth Enhancement, Investment Consulting, Family Office Services</td>
+      <td>work-optional, work-optional-gap, retirement-gap, cash-flow-blind</td>
+      <td>Empowering, freedom-focused, pragmatic</td>
+    </tr>
+    <tr>
+      <td><strong>The Wealth Protector</strong></td>
+      <td>Affluent families (40-65) who have experienced or fear wealth erosion, skeptical of advisors</td>
+      <td>Past bad advice, market crash losses, distrust of non-fiduciary advisors</td>
+      <td>Wealth Protection, Investment Consulting, Wealth Enhancement</td>
+      <td>protection-need, market-anxiety, trust-gap, fiduciary-need</td>
+      <td>Reassuring, transparent, trust-building</td>
+    </tr>
+    <tr>
+      <td><strong>The Strategic Grower</strong></td>
+      <td>Entrepreneurs and business owners (35-55) in active accumulation, comfortable with risk</td>
+      <td>No integrated plan connecting business and personal wealth, no exit strategy, over-concentrated</td>
+      <td>Investment Consulting, Wealth Enhancement, Real Estate Fund</td>
+      <td>strategic-growth, business-exit, high-opportunity, optimization-ready</td>
+      <td>Confident, strategic, results-oriented</td>
+    </tr>
+    <tr>
+      <td><strong>The Navigating Family</strong></td>
+      <td>Families in transition (inheritance, divorce, death, business sale, sudden wealth event)</td>
+      <td>Overwhelmed by financial complexity during a vulnerable period, no coordinated guidance</td>
+      <td>Family Office Services, Wealth Protection, Wealth Transfer</td>
+      <td>life-transition, family-navigation, family-office-need, high-pain</td>
+      <td>Empathetic, patient, protective</td>
+    </tr>
+  </table>
+
+  <h3>Profile Distribution Expectations</h3>
+  <p>Based on the quiz structure and Lansing Street's target market, expected distribution is:</p>
+  <ul>
+    <li><strong>Legacy Builder:</strong> 25-30% (highest for HNW families in Greater Philadelphia)</li>
+    <li><strong>Work-Optional Seeker:</strong> 20-25% (strong alignment with "Helping Families Make Work Optional" messaging)</li>
+    <li><strong>Wealth Protector:</strong> 20-25% (common among families with previous advisor dissatisfaction)</li>
+    <li><strong>Strategic Grower:</strong> 10-15% (smaller segment, higher revenue potential per client)</li>
+    <li><strong>Navigating Family:</strong> 10-15% (smaller but highest urgency; often convert fastest)</li>
+  </ul>
+
+  <h3>Service Mapping</h3>
+  <p>Each profile receives 2-3 service recommendations that connect to specific Lansing Street offerings. The recommendations appear on the result page as context (not product cards with pricing). Temperature determines whether the CTA is a consultation booking (hot), a resource download (warm), or educational content (cold).</p>
+</div>
+
+</div>
+
+<script>
+function toggleCollapsible(header) {
+  const collapsible = header.parentElement;
+  collapsible.classList.toggle('open');
+}
+</script>
+
+</body>
+</html>

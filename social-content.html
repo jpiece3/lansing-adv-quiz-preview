@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Social Content Calendar - Lansing Street Advisors Quiz Funnel</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Source+Sans+3:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --color-primary: #1B365D;
+  --color-primary-dark: #122440;
+  --color-primary-light: #25516D;
+  --color-secondary: #B29D62;
+  --color-bg: #FAFAF8;
+  --color-bg-card: #FFFFFF;
+  --color-bg-alt: #F5F3EF;
+  --color-text-primary: #1B365D;
+  --color-text-body: #3D3D3D;
+  --color-text-secondary: #5A6A7A;
+  --color-text-muted: #8B95A2;
+  --color-border: #E2DFD8;
+  --font-heading: 'Playfair Display', Georgia, serif;
+  --font-body: 'Source Sans 3', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: var(--font-body); background: var(--color-bg); color: var(--color-text-body); line-height: 1.6; }
+.page-header {
+  background: linear-gradient(135deg, var(--color-primary-dark) 0%, var(--color-primary) 40%, var(--color-primary-light) 100%);
+  color: white;
+  padding: 48px 24px;
+  text-align: center;
+}
+.page-header h1 { font-family: var(--font-heading); font-size: 2.25rem; font-weight: 700; margin-bottom: 8px; }
+.page-header p { font-size: 1.125rem; opacity: 0.85; }
+.container { max-width: 960px; margin: 0 auto; padding: 32px 24px 64px; }
+.section { margin-bottom: 48px; }
+.section h2 {
+  font-family: var(--font-heading);
+  font-size: 1.75rem;
+  color: var(--color-text-primary);
+  margin-bottom: 16px;
+  padding-bottom: 12px;
+  border-bottom: 2px solid var(--color-border);
+}
+.section h3 {
+  font-family: var(--font-heading);
+  font-size: 1.25rem;
+  color: var(--color-text-primary);
+  margin-top: 24px;
+  margin-bottom: 8px;
+}
+.section p { margin-bottom: 12px; }
+.pillar-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+  margin: 24px 0;
+}
+.pillar-card {
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  padding: 20px;
+  border-top: 3px solid var(--color-secondary);
+}
+.pillar-card h4 {
+  font-family: var(--font-heading);
+  font-size: 1rem;
+  color: var(--color-text-primary);
+  margin-bottom: 6px;
+}
+.pillar-card p {
+  font-size: 0.8125rem;
+  color: var(--color-text-secondary);
+}
+.platform-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 16px;
+  margin: 24px 0;
+}
+.platform-card {
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  padding: 20px;
+}
+.platform-card h4 {
+  font-family: var(--font-heading);
+  font-size: 1rem;
+  color: var(--color-text-primary);
+  margin-bottom: 6px;
+}
+.platform-card p {
+  font-size: 0.8125rem;
+  color: var(--color-text-secondary);
+}
+.platform-badge {
+  display: inline-block;
+  padding: 2px 10px;
+  border-radius: 9999px;
+  font-weight: 600;
+  font-size: 0.6875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin-bottom: 8px;
+}
+.badge-linkedin { background: #E8F1FA; color: #0A66C2; }
+.badge-instagram { background: #FDE8F0; color: #E1306C; }
+.badge-twitter { background: #E8F4FD; color: #1DA1F2; }
+.badge-facebook { background: #E7F3FF; color: #1877F2; }
+.week-section {
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  margin-bottom: 24px;
+  overflow: hidden;
+}
+.week-header {
+  background: var(--color-primary);
+  color: white;
+  padding: 12px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.week-header h3 {
+  font-family: var(--font-heading);
+  color: white;
+  margin: 0;
+  font-size: 1.125rem;
+}
+.week-theme {
+  font-size: 0.75rem;
+  opacity: 0.8;
+  font-weight: 500;
+}
+.post-row {
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--color-border);
+  display: grid;
+  grid-template-columns: 100px 80px 1fr;
+  gap: 16px;
+  align-items: start;
+}
+.post-row:last-child { border-bottom: none; }
+.post-day {
+  font-weight: 600;
+  font-size: 0.8125rem;
+  color: var(--color-text-primary);
+}
+.post-type {
+  font-size: 0.6875rem;
+  color: var(--color-text-muted);
+  font-weight: 500;
+}
+.post-content {
+  font-size: 0.875rem;
+  color: var(--color-text-body);
+}
+.post-content strong {
+  color: var(--color-text-primary);
+}
+.post-cta {
+  font-size: 0.75rem;
+  color: var(--color-secondary);
+  font-weight: 600;
+  margin-top: 4px;
+}
+.highlight-box {
+  background: linear-gradient(135deg, rgba(178,157,98,0.08), rgba(178,157,98,0.04));
+  border-left: 3px solid var(--color-secondary);
+  border-radius: 0 8px 8px 0;
+  padding: 16px 20px;
+  margin: 16px 0;
+}
+.highlight-box strong { color: var(--color-secondary); }
+ul { padding-left: 24px; margin-bottom: 12px; }
+li { margin-bottom: 6px; }
+@media (max-width: 640px) {
+  .page-header h1 { font-size: 1.75rem; }
+  .container { padding: 16px; }
+  .post-row { grid-template-columns: 1fr; gap: 4px; }
+  .pillar-grid, .platform-grid { grid-template-columns: 1fr; }
+}
+</style>
+</head>
+<body>
+
+<div class="page-header">
+  <h1>30-Day Social Content Calendar</h1>
+  <p>Content strategy for promoting the Wealth Strategy Score quiz funnel across all platforms</p>
+</div>
+
+<div class="container">
+
+<!-- CONTENT PILLARS -->
+<div class="section">
+  <h2>Content Pillars</h2>
+  <p>All social content rotates through four pillars derived from Lansing Street Advisors' core messaging and quiz keyword clusters.</p>
+
+  <div class="pillar-grid">
+    <div class="pillar-card">
+      <h4>1. The Coordination Gap</h4>
+      <p>Educational content about fragmented financial lives, the cost of uncoordinated planning, and why a family office approach matters. Drives quiz starts.</p>
+    </div>
+    <div class="pillar-card">
+      <h4>2. Fiduciary Trust</h4>
+      <p>Content about fiduciary duty, the difference between brokers and advisors, and why independence matters. Builds brand differentiation.</p>
+    </div>
+    <div class="pillar-card">
+      <h4>3. Generational Wealth</h4>
+      <p>Statistics and stories about multi-generational wealth preservation, estate planning, and family governance. Emotionally resonant for Legacy Builders.</p>
+    </div>
+    <div class="pillar-card">
+      <h4>4. Work-Optional Life</h4>
+      <p>Content about financial freedom, retirement readiness, and making work a choice. Connects directly to the Lansing Street mission and quiz outcomes.</p>
+    </div>
+  </div>
+</div>
+
+<!-- PLATFORM STRATEGY -->
+<div class="section">
+  <h2>Platform Strategy</h2>
+
+  <div class="platform-grid">
+    <div class="platform-card">
+      <span class="platform-badge badge-linkedin">LINKEDIN</span>
+      <h4>Primary Channel</h4>
+      <p>Matt Topley's personal profile. Long-form thought leadership posts (150-300 words). Market commentary tied to coordination themes. 3-4 posts per week. Matt's personal voice. Quiz link in every other post.</p>
+    </div>
+    <div class="platform-card">
+      <span class="platform-badge badge-instagram">INSTAGRAM</span>
+      <h4>Visual Education</h4>
+      <p>Carousel posts with statistics and frameworks. Story polls about wealth coordination. Reels with quick tips. Brand colors (navy/gold). 3-4 posts per week. Link in bio to quiz.</p>
+    </div>
+    <div class="platform-card">
+      <span class="platform-badge badge-twitter">TWITTER/X</span>
+      <h4>Market Commentary</h4>
+      <p>Quick market observations, financial stats, and one-liners from Topley's Top 10. Thread format for deeper topics. 4-5 posts per week. Quiz link pinned.</p>
+    </div>
+    <div class="platform-card">
+      <span class="platform-badge badge-facebook">FACEBOOK</span>
+      <h4>Community / Local</h4>
+      <p>Share Topley's Top 10 content, quiz link, local community engagement. Target Montgomery County and Philadelphia area audiences. 2-3 posts per week.</p>
+    </div>
+  </div>
+</div>
+
+<!-- WEEK BY WEEK CALENDAR -->
+<div class="section">
+  <h2>Week-by-Week Calendar</h2>
+
+  <!-- WEEK 1 -->
+  <div class="week-section">
+    <div class="week-header">
+      <h3>Week 1: Launch the Coordination Conversation</h3>
+      <span class="week-theme">Pillar: The Coordination Gap</span>
+    </div>
+    <div class="post-row">
+      <div class="post-day">Monday</div>
+      <div><span class="platform-badge badge-linkedin">LI</span></div>
+      <div class="post-content">
+        <strong>Launch post:</strong> "Most families with $1M+ have 4-7 financial professionals who never talk to each other. I have seen this pattern for 25 years. We built a free assessment to help you see how coordinated your financial life really is. 7 questions, 2 minutes. Link in comments."
+        <div class="post-cta">CTA: Quiz link</div>
+      </div>
+    </div>
+    <div class="post-row">
+      <div class="post-day">Tuesday</div>
+      <div><span class="platform-badge badge-instagram">IG</span></div>
+      <div class="post-content">
+        <strong>Carousel (5 slides):</strong> "The 5 Dimensions of Your Financial Life." Slide 1: Title. Slides 2-5: Tax Efficiency, Estate Planning, Investment Strategy, Cash Flow, Risk Management (one per slide with one-line description). Slide 6: "See your score across all 5. Link in bio."
+        <div class="post-cta">CTA: Link in bio to quiz</div>
+      </div>
+    </div>
+    <div class="post-row">
+      <div class="post-day">Wednesday</div>
+      <div><span class="platform-badge badge-twitter">X</span></div>
+      <div class="post-content">
+        <strong>Thread:</strong> "The biggest financial risk for affluent families is not market crashes. It is coordination failure. Here are 5 signs your financial life is more fragmented than you think. [Thread of 5 signs]"
+        <div class="post-cta">CTA: Quiz link in final tweet</div>
+      </div>
+    </div>
+    <div class="post-row">
+      <div class="post-day">Thursday</div>
+      <div><span class="platform-badge badge-linkedin">LI</span></div>
+      <div class="post-content">
+        <strong>Market tie-in:</strong> Share a Topley's Top 10 insight and connect it to why coordination matters. "Today's market move is a reminder that your investment strategy should not exist in a vacuum. It needs to be connected to your tax plan, estate plan, and cash flow needs."
+        <div class="post-cta">CTA: Soft quiz mention</div>
+      </div>
+    </div>
+    <div class="post-row">
+      <div class="post-day">Friday</div>
+      <div><span class="platform-badge badge-facebook">FB</span></div>
+      <div class="post-content">
+        <strong>Quiz promo:</strong> "We built a free 2-minute Wealth Strategy Score for families who want to understand how coordinated their financial life really is. No sign-up needed to start. See your personalized score and radar chart."
+        <div class="post-cta">CTA: Direct quiz link</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- WEEK 2 -->
+  <div class="week-section">
+    <div class="week-header">
+      <h3>Week 2: Build Trust Through Fiduciary Education</h3>
+      <span class="week-theme">Pillar: Fiduciary Trust</span>
+    </div>
+    <div class="post-row">
+      <div class="post-day">Monday</div>
+      <div><span class="platform-badge badge-linkedin">LI</span></div>
+      <div class="post-content">
+        <strong>Thought leadership:</strong> "83% of Americans think their financial advisor is a fiduciary. Only 15% actually are. Here is the difference in plain English: [Explain fiduciary vs. suitability standard]. If you are not sure which you have, that is worth knowing."
+        <div class="post-cta">CTA: Quiz link (tests advisor relationship in Q5)</div>
+      </div>
+    </div>
+    <div class="post-row">
+      <div class="post-day">Tuesday</div>
+      <div><span class="platform-badge badge-instagram">IG</span></div>
+      <div class="post-content">
+        <strong>Story poll:</strong> "Do you know if your financial advisor is a fiduciary? [Yes/No poll]" Follow up with: "If you said no or are not sure, you are in the majority. Here is why it matters. [Educational story slides]"
+        <div class="post-cta">CTA: Swipe up to quiz</div>
+      </div>
+    </div>
+    <div class="post-row">
+      <div class="post-day">Wednesday</div>
+      <div><span class="platform-badge badge-twitter">X</span></div>
+      <div class="post-content">
+        <strong>Single tweet:</strong> "The one question that tells you everything about your financial advisor: 'Are you a legal fiduciary?' If they hesitate, that is your answer."
+        <div class="post-cta">CTA: None (pure value)</div>
+      </div>
+    </div>
+    <div class="post-row">
+      <div class="post-day">Thursday</div>
+      <div><span class="platform-badge badge-linkedin">LI</span></div>
+      <div class="post-content">
+        <strong>Comparison post:</strong> "Wirehouse vs. Independent RIA. Here is what most people do not know about where their advisor works. [4-5 bullet comparison]. We chose independence for a reason. We work for families, not a bank."
+        <div class="post-cta">CTA: Soft quiz mention</div>
+      </div>
+    </div>
+    <div class="post-row">
+      <div class="post-day">Friday</div>
+      <div><span class="platform-badge badge-instagram">IG</span></div>
+      <div class="post-content">
+        <strong>Reel:</strong> "3 questions to ask your financial advisor this week. 1) Are you a fiduciary? 2) Who do you work for? 3) How do you get paid? Simple questions. Revealing answers."
+        <div class="post-cta">CTA: Quiz link in bio</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- WEEK 3 -->
+  <div class="week-section">
+    <div class="week-header">
+      <h3>Week 3: Legacy and Generational Wealth</h3>
+      <span class="week-theme">Pillar: Generational Wealth</span>
+    </div>
+    <div class="post-row">
+      <div class="post-day">Monday</div>
+      <div><span class="platform-badge badge-linkedin">LI</span></div>
+      <div class="post-content">
+        <strong>Heritage story:</strong> "My ancestors came from Kilkenny, Ireland to build a better future for their family. That is the same spirit that drives our work today. Generational thinking is not just about money. It is about values, coordination, and making sure the next chapter of your family's story is written deliberately."
+        <div class="post-cta">CTA: Quiz link (legacy question Q7)</div>
+      </div>
+    </div>
+    <div class="post-row">
+      <div class="post-day">Tuesday</div>
+      <div><span class="platform-badge badge-instagram">IG</span></div>
+      <div class="post-content">
+        <strong>Carousel (4 slides):</strong> "70% of family wealth is gone by generation 2. 90% by generation 3. Here is what the families who beat those odds do differently. [3 slides with each principle: coordinate, communicate, work with a fiduciary]"
+        <div class="post-cta">CTA: Link in bio to quiz</div>
+      </div>
+    </div>
+    <div class="post-row">
+      <div class="post-day">Wednesday</div>
+      <div><span class="platform-badge badge-twitter">X</span></div>
+      <div class="post-content">
+        <strong>Stat thread:</strong> "Generational wealth stats that should keep every family up at night: [Thread with 4-5 wealth transfer statistics]. The good news: these are all solvable with the right coordination."
+        <div class="post-cta">CTA: Quiz link in final tweet</div>
+      </div>
+    </div>
+    <div class="post-row">
+      <div class="post-day">Thursday</div>
+      <div><span class="platform-badge badge-facebook">FB</span></div>
+      <div class="post-content">
+        <strong>Community post:</strong> "One of the most powerful things a family can do is have an honest conversation about money. Not about how much you have. About what it means to your family and what you want it to do for the next generation."
+        <div class="post-cta">CTA: Soft quiz mention</div>
+      </div>
+    </div>
+    <div class="post-row">
+      <div class="post-day">Friday</div>
+      <div><span class="platform-badge badge-linkedin">LI</span></div>
+      <div class="post-content">
+        <strong>Four Pillars post:</strong> "The Four Pillars of Financial Success: Enhancement, Transfer, Protection, and Investment Consulting. Like the four towers of Kilkenny Castle, they form the bedrock of a prosperous financial future. Most families have one or two covered. Few have all four coordinated."
+        <div class="post-cta">CTA: Quiz link</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- WEEK 4 -->
+  <div class="week-section">
+    <div class="week-header">
+      <h3>Week 4: Work-Optional Freedom</h3>
+      <span class="week-theme">Pillar: Work-Optional Life</span>
+    </div>
+    <div class="post-row">
+      <div class="post-day">Monday</div>
+      <div><span class="platform-badge badge-linkedin">LI</span></div>
+      <div class="post-content">
+        <strong>Mission post:</strong> "Helping Families Make Work Optional. That is our mission. It does not mean everyone should stop working. It means everyone should have the choice. Do you know the specific number that would make work optional for your family? Most people do not."
+        <div class="post-cta">CTA: Quiz link (Q6 tests this exactly)</div>
+      </div>
+    </div>
+    <div class="post-row">
+      <div class="post-day">Tuesday</div>
+      <div><span class="platform-badge badge-instagram">IG</span></div>
+      <div class="post-content">
+        <strong>Story series:</strong> "3 things most families get wrong about retirement planning. 1) They guess instead of calculate. 2) They forget about taxes on withdrawals. 3) They plan for the money but not the life. [3 story slides with one point each]"
+        <div class="post-cta">CTA: Swipe up to quiz</div>
+      </div>
+    </div>
+    <div class="post-row">
+      <div class="post-day">Wednesday</div>
+      <div><span class="platform-badge badge-twitter">X</span></div>
+      <div class="post-content">
+        <strong>Single tweet:</strong> "Most families overestimate what they need to retire by 20-30%. The problem is not saving more. It is coordinating better. Tax efficiency, cash flow planning, and withdrawal strategy matter more than the headline number."
+        <div class="post-cta">CTA: None (pure value)</div>
+      </div>
+    </div>
+    <div class="post-row">
+      <div class="post-day">Thursday</div>
+      <div><span class="platform-badge badge-linkedin">LI</span></div>
+      <div class="post-content">
+        <strong>Market insight:</strong> Share Topley's Top 10 key insight and tie it to the work-optional theme. "Markets are noisy right now. Here is what matters for families focused on making work optional: [insight]. Your portfolio should be structured for the life you want, not the market's latest headline."
+        <div class="post-cta">CTA: Quiz link</div>
+      </div>
+    </div>
+    <div class="post-row">
+      <div class="post-day">Friday</div>
+      <div><span class="platform-badge badge-instagram">IG</span></div>
+      <div class="post-content">
+        <strong>Carousel:</strong> "Your Wealth Strategy Score: 5 things it reveals about your financial life. [5 slides: Tax Efficiency, Estate Planning, Investment Strategy, Cash Flow, Risk Management]. Take the free 2-minute assessment. Link in bio."
+        <div class="post-cta">CTA: Link in bio to quiz</div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- CONTENT GUIDELINES -->
+<div class="section">
+  <h2>Content Guidelines</h2>
+  <div class="highlight-box">
+    <strong>Voice:</strong> Authoritative yet approachable. Write as Matt Topley on LinkedIn and Twitter. Write as the Lansing Street brand on Instagram and Facebook. Never use aggressive sales language. Always lead with value.
+  </div>
+  <div class="highlight-box">
+    <strong>Quiz link frequency:</strong> Include a quiz link in approximately 60% of posts. The other 40% should be pure value (no CTA). This ratio builds trust and prevents fatigue.
+  </div>
+  <div class="highlight-box">
+    <strong>Visual consistency:</strong> Instagram carousels and stories should use the navy (#1B365D) and gold (#B29D62) brand palette. Playfair Display for headlines. Source Sans for body text. Clean, premium layouts that reflect the Glossy design mode.
+  </div>
+</div>
+
+</div>
+</body>
+</html>

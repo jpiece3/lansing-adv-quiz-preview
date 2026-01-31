@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sales Scripts - Lansing Street Advisors Quiz Funnel</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Source+Sans+3:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --color-primary: #1B365D;
+  --color-primary-dark: #122440;
+  --color-primary-light: #25516D;
+  --color-secondary: #B29D62;
+  --color-bg: #FAFAF8;
+  --color-bg-card: #FFFFFF;
+  --color-bg-alt: #F5F3EF;
+  --color-text-primary: #1B365D;
+  --color-text-body: #3D3D3D;
+  --color-text-secondary: #5A6A7A;
+  --color-text-muted: #8B95A2;
+  --color-border: #E2DFD8;
+  --color-temp-hot: #22C55E;
+  --color-temp-warm: #F59E0B;
+  --color-temp-cold: #3B82F6;
+  --font-heading: 'Playfair Display', Georgia, serif;
+  --font-body: 'Source Sans 3', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: var(--font-body); background: var(--color-bg); color: var(--color-text-body); line-height: 1.6; }
+.page-header {
+  background: linear-gradient(135deg, var(--color-primary-dark) 0%, var(--color-primary) 40%, var(--color-primary-light) 100%);
+  color: white;
+  padding: 48px 24px;
+  text-align: center;
+}
+.page-header h1 { font-family: var(--font-heading); font-size: 2.25rem; font-weight: 700; margin-bottom: 8px; }
+.page-header p { font-size: 1.125rem; opacity: 0.85; }
+.container { max-width: 900px; margin: 0 auto; padding: 32px 24px 64px; }
+.section { margin-bottom: 48px; }
+.section h2 {
+  font-family: var(--font-heading);
+  font-size: 1.75rem;
+  color: var(--color-text-primary);
+  margin-bottom: 16px;
+  padding-bottom: 12px;
+  border-bottom: 2px solid var(--color-border);
+}
+.section h3 {
+  font-family: var(--font-heading);
+  font-size: 1.25rem;
+  color: var(--color-text-primary);
+  margin-top: 24px;
+  margin-bottom: 8px;
+}
+.section p { margin-bottom: 12px; }
+.temp-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 6px 16px;
+  border-radius: 9999px;
+  font-weight: 600;
+  font-size: 0.8125rem;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  margin-bottom: 16px;
+}
+.temp-hot { background: rgba(34,197,94,0.1); color: #16a34a; }
+.temp-warm { background: rgba(245,158,11,0.1); color: #d97706; }
+.temp-cold { background: rgba(59,130,246,0.1); color: #2563eb; }
+.script-card {
+  background: var(--color-bg-card);
+  border: 1px solid var(--color-border);
+  border-radius: 12px;
+  padding: 24px;
+  margin-bottom: 16px;
+}
+.script-label {
+  font-size: 0.6875rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  color: var(--color-text-muted);
+  margin-bottom: 4px;
+}
+.script-text {
+  font-size: 0.9375rem;
+  line-height: 1.7;
+  color: var(--color-text-body);
+  font-style: italic;
+  background: var(--color-bg-alt);
+  border-radius: 8px;
+  padding: 16px;
+  margin-top: 8px;
+  margin-bottom: 12px;
+}
+.script-note {
+  font-size: 0.8125rem;
+  color: var(--color-text-secondary);
+  padding-left: 12px;
+  border-left: 2px solid var(--color-secondary);
+  margin-top: 8px;
+}
+.highlight-box {
+  background: linear-gradient(135deg, rgba(178,157,98,0.08), rgba(178,157,98,0.04));
+  border-left: 3px solid var(--color-secondary);
+  border-radius: 0 8px 8px 0;
+  padding: 16px 20px;
+  margin: 16px 0;
+}
+.highlight-box strong { color: var(--color-secondary); }
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 16px 0;
+  font-size: 0.9375rem;
+}
+th { background: var(--color-primary); color: white; padding: 10px 14px; text-align: left; font-weight: 600; font-size: 0.8125rem; text-transform: uppercase; }
+td { padding: 10px 14px; border-bottom: 1px solid var(--color-border); vertical-align: top; }
+tr:nth-child(even) { background: var(--color-bg-alt); }
+ul { padding-left: 24px; margin-bottom: 12px; }
+li { margin-bottom: 8px; }
+@media (max-width: 640px) {
+  .page-header h1 { font-size: 1.75rem; }
+  .container { padding: 16px; }
+  .section h2 { font-size: 1.375rem; }
+  table { font-size: 0.8125rem; }
+}
+</style>
+</head>
+<body>
+
+<div class="page-header">
+  <h1>Sales Conversation Scripts</h1>
+  <p>Framework-based scripts for following up with quiz leads by temperature segment</p>
+</div>
+
+<div class="container">
+
+<div class="highlight-box">
+  <strong>Important context:</strong> These are conversation frameworks, not word-for-word scripts. Lansing Street Advisors' brand voice is authoritative yet warm. Never use aggressive sales language. Use phrases like "complimentary discovery meeting" and "conversation" instead of "sales call" or "consultation." The goal of every conversation is to understand the family's situation and determine mutual fit.
+</div>
+
+<!-- HOT LEAD SCRIPT -->
+<div class="section">
+  <span class="temp-badge temp-hot">HOT LEAD (80-100)</span>
+  <h2>Hot Lead Conversation Framework</h2>
+  <p><strong>Goal:</strong> Schedule the discovery meeting. These leads have high awareness of their coordination gaps and are likely experiencing a triggering event. Move with urgency but not pressure.</p>
+
+  <h3>Opening (Reference Their Quiz)</h3>
+  <div class="script-card">
+    <div class="script-label">Phone / Video Call Opening</div>
+    <div class="script-text">"Hi {{first_name}}, this is [name] from Lansing Street Advisors. I am reaching out because you took our Wealth Strategy Score assessment recently and your results indicated some significant coordination gaps in your financial life. I wanted to see if now is a good time to talk about what those results mean and whether a deeper conversation might be helpful for your family."</div>
+    <div class="script-note"><strong>Key principle:</strong> Reference the quiz immediately. They gave you this information voluntarily. It is not cold outreach.</div>
+  </div>
+
+  <h3>Discovery Questions</h3>
+  <div class="script-card">
+    <div class="script-label">Understand Their Situation</div>
+    <div class="script-text">"Your score suggested that [reference their top radar dimension gap]. Can you tell me a bit more about what is going on in your financial life right now that made you take the assessment?"</div>
+    <div class="script-note"><strong>Listen for:</strong> Triggering events (business sale, retirement, inheritance, divorce, advisor dissatisfaction). These are the signals that convert hot leads into clients.</div>
+  </div>
+
+  <div class="script-card">
+    <div class="script-label">Assess Current Advisor Situation</div>
+    <div class="script-text">"Based on your quiz answers, it sounds like you may be working with professionals who are not fully coordinated. Can you tell me about your current setup? Do you have an advisor, CPA, estate attorney? Are they working together?"</div>
+    <div class="script-note"><strong>Listen for:</strong> Frustration with current advisor, multiple uncoordinated professionals, no fiduciary in place. These are displacement opportunities.</div>
+  </div>
+
+  <h3>Bridge to Discovery Meeting</h3>
+  <div class="script-card">
+    <div class="script-label">Transition to Next Step</div>
+    <div class="script-text">"Based on what you are describing, I think a discovery meeting with Matt Topley would be really valuable for your family. It is 30 minutes, complimentary, and completely confidential. Matt will map out your complete financial picture and show you where the biggest coordination opportunities are. There is no obligation and no follow-up unless you want it. Would this week or next week work better for you?"</div>
+    <div class="script-note"><strong>Key principle:</strong> Give two time options, not an open-ended "would you like to meet?" Binary choice reduces friction.</div>
+  </div>
+
+  <h3>If They Hesitate</h3>
+  <div class="script-card">
+    <div class="script-label">Handling Resistance</div>
+    <div class="script-text">"I completely understand. These are big decisions and they deserve careful thought. Here is what I would suggest: let me send you a brief overview of what a discovery meeting looks like so you know exactly what to expect. No surprises. And if it feels right, you can book a time whenever you are ready. Does that work?"</div>
+    <div class="script-note"><strong>Key principle:</strong> Never push. Offer information that reduces uncertainty. Hot leads who hesitate often convert within 1-2 weeks if given space.</div>
+  </div>
+</div>
+
+<!-- WARM LEAD SCRIPT -->
+<div class="section">
+  <span class="temp-badge temp-warm">WARM LEAD (50-79)</span>
+  <h2>Warm Lead Conversation Framework</h2>
+  <p><strong>Goal:</strong> Build trust through education. Share a relevant case study or insight. Plant the seed for a future discovery meeting without pushing it.</p>
+
+  <h3>Opening</h3>
+  <div class="script-card">
+    <div class="script-label">Email / Phone Opening</div>
+    <div class="script-text">"Hi {{first_name}}, this is [name] from Lansing Street Advisors. You took our Wealth Strategy Score a few days ago and I noticed your score pointed to some interesting coordination opportunities, especially around [their top dimension]. I am not calling to sell you anything. I wanted to share a quick insight that might be useful based on what your results showed."</div>
+    <div class="script-note"><strong>Key principle:</strong> Lead with value, not a meeting request. Warm leads need trust before they commit to a conversation.</div>
+  </div>
+
+  <h3>Share a Case Study Pattern</h3>
+  <div class="script-card">
+    <div class="script-label">Relevant Scenario</div>
+    <div class="script-text">"We work with a lot of families in a similar situation. Solid financial foundation, good income, but the pieces are not coordinated. What we typically see is that when we bring everything under one roof, the tax efficiency alone improves by 15-30%. That is real money that was going to the IRS instead of the family."</div>
+    <div class="script-note"><strong>Key principle:</strong> Use anonymized patterns, not specific client stories. Warm leads are evaluating credibility. General patterns feel more authentic than polished testimonials.</div>
+  </div>
+
+  <h3>Offer Value, Not a Meeting</h3>
+  <div class="script-card">
+    <div class="script-label">Soft Close</div>
+    <div class="script-text">"I do not want to take up more of your time. But if you ever want to explore what closing those coordination gaps might look like for your family specifically, we offer a complimentary discovery meeting. No obligation. In the meantime, Matt writes a daily newsletter called Topley's Top 10 that covers markets and wealth strategy. Would you like me to add you?"</div>
+    <div class="script-note"><strong>Key principle:</strong> Give them a lower-commitment next step (newsletter) alongside the higher-commitment one (meeting). Warm leads often enter the content flywheel and convert over weeks or months.</div>
+  </div>
+
+  <h3>Follow-Up Cadence</h3>
+  <ul>
+    <li><strong>Day 1:</strong> Value-forward email referencing their specific quiz results and coordination gaps</li>
+    <li><strong>Day 7:</strong> Share a relevant article or market insight from Topley's Top 10</li>
+    <li><strong>Day 14:</strong> Brief check-in with soft discovery meeting offer</li>
+    <li><strong>Day 30:</strong> Final touchpoint with educational resource (fiduciary guide or wealth coordination checklist)</li>
+  </ul>
+</div>
+
+<!-- COLD LEAD SCRIPT -->
+<div class="section">
+  <span class="temp-badge temp-cold">COLD LEAD (0-49)</span>
+  <h2>Cold Lead Conversation Framework</h2>
+  <p><strong>Goal:</strong> Educate and build long-term awareness. These leads are early in their financial awareness journey. The objective is to position Lansing Street as a trusted resource they think of when they are ready.</p>
+
+  <h3>Opening</h3>
+  <div class="script-card">
+    <div class="script-label">Email Opening (Phone Not Recommended for Cold Leads)</div>
+    <div class="script-text">"Hi {{first_name}},
+
+Thank you for taking the Wealth Strategy Score assessment. Your score of {{score}} suggests you have a strong financial foundation, which is great news.
+
+I wanted to share one insight from your results that might be useful: [reference their highest radar dimension]. Most families in a similar position do not realize this is an area worth paying attention to until it becomes urgent. Knowing about it now puts you ahead.
+
+No action needed on your end. But if you enjoy staying informed about markets and wealth strategy, Matt Topley writes a daily newsletter called Topley's Top 10 that covers both. It is free and you can unsubscribe anytime."</div>
+    <div class="script-note"><strong>Key principle:</strong> Cold leads should receive email only, not phone calls. The tone is educational, not sales. The goal is to enter the Topley's Top 10 ecosystem where they warm up organically over time.</div>
+  </div>
+
+  <h3>Education-First Approach</h3>
+  <div class="script-card">
+    <div class="script-label">Value Delivery</div>
+    <div class="script-text">"Here are three resources that families in your position often find valuable:
+
+1. Understanding the Three Phases of Economic Life (which phase are you in?)
+2. What a Fiduciary Advisor Actually Does (and why it matters)
+3. The Real Cost of Uncoordinated Financial Planning
+
+These are available on our website and we are happy to send them your way."</div>
+    <div class="script-note"><strong>Key principle:</strong> Give freely. Cold leads who receive genuine value without pressure are the most loyal when they eventually convert. The average conversion timeline for cold financial leads is 6-18 months.</div>
+  </div>
+</div>
+
+<!-- COMMON OBJECTIONS -->
+<div class="section">
+  <h2>Common Objections</h2>
+
+  <table>
+    <tr><th>Objection</th><th>Response Framework</th></tr>
+    <tr>
+      <td><strong>"I already have a financial advisor."</strong></td>
+      <td>"That is great. Many of our clients came to us with existing advisors. The question is not whether you have one, but whether your advisor is coordinating across your full financial life: investments, taxes, estate plan, and protection. If they are focused only on investments, there may be gaps elsewhere that are worth understanding. Our discovery meeting can help you see the full picture."</td>
+    </tr>
+    <tr>
+      <td><strong>"I am not sure I have enough assets for a firm like yours."</strong></td>
+      <td>"We work with families across a range of situations. What matters to us is not a specific dollar threshold. It is whether you value having someone coordinate your complete financial life. If your financial situation has grown complex enough that a quiz about coordination resonated with you, that is usually a signal that a conversation would be valuable."</td>
+    </tr>
+    <tr>
+      <td><strong>"I need to talk to my spouse first."</strong></td>
+      <td>"Absolutely. Financial decisions should be made together. In fact, we encourage both partners to attend the discovery meeting. That way, you both see the same picture and can make decisions from the same foundation. Would you like to schedule a time that works for both of you?"</td>
+    </tr>
+    <tr>
+      <td><strong>"What do you charge?"</strong></td>
+      <td>"Our fee structure depends on the scope of services and the complexity of your situation. We are a fee-only fiduciary, which means we do not earn commissions or sell products. Our interests are aligned with yours. The discovery meeting is complimentary and will help us both understand whether there is a fit before we talk about specifics."</td>
+    </tr>
+    <tr>
+      <td><strong>"I am not ready to make a change right now."</strong></td>
+      <td>"I respect that. There is no urgency on our end. The coordination gaps your quiz identified will still be there when you are ready. In the meantime, Matt writes a daily newsletter covering markets and wealth strategy. It is a good way to stay connected and informed. Can I send that your way?"</td>
+    </tr>
+    <tr>
+      <td><strong>"How is Lansing Street different from [wirehouse/bank]?"</strong></td>
+      <td>"The biggest difference is independence. We do not work for a bank or wirehouse. We do not sell proprietary products. We do not have quotas. We are a SEC-registered fiduciary, which means we are legally required to put your family's interests first. Matt has 25 years of experience, including time on Wall Street, and he chose independence for a reason: it is the only model where the advice is truly conflict-free."</td>
+    </tr>
+    <tr>
+      <td><strong>"I took the quiz but I do not think I need help."</strong></td>
+      <td>"That is a fair assessment. Your score suggests you are in a solid position. The reason we follow up is that the families who benefit most from our approach are often the ones who think they are doing fine. Not because they are wrong, but because they do not know what they are missing. The coordination gaps are invisible until someone shows them. That is what the discovery meeting is for."</td>
+    </tr>
+  </table>
+</div>
+
+</div>
+</body>
+</html>
